@@ -1,7 +1,6 @@
 baseURL = 'https://alexpang.cn/fe-interview'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
-
+title = '子洋前端面试题库'
 
 [module]
     [[module.imports]]
