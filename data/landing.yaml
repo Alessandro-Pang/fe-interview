@@ -1,0 +1,76 @@
+hero:
+  enable: true
+  weight: 10
+  template: 'hero'
+  title: '前端面试题库'
+  subtitle: '一个专注于前端开发的面试题库，涵盖 ​**HTML**、**CSS**、**JavaScript**、**React**、**Vue**​ 等热门技术栈。帮助你快速掌握面试核心知识点，轻松应对前端面试挑战！'
+  info: '**免费开源**，持续更新中。欢迎贡献你的面试题！'
+
+  backgroundImage:
+    path: 'images/templates/hero'
+    filename:
+      desktop: 'gradient-desktop.webp'
+      mobile: 'gradient-mobile.webp'
+
+  badge:
+    text: 'v1.0.0'
+    color: 'primary'
+    pill: false
+    soft: true
+
+  image:
+    path: 'images'
+    filename: 'lotus_docs_screenshot.png'
+    alt: '前端面试题库截图'
+    boxShadow: true
+    rounded: true
+
+  ctaButton:
+    icon: 'rocket_launch'
+    btnText: '开始学习'
+    url: '/docs/quickstart/'
+
+  cta2Button:
+    icon: 'code'
+    btnText: '贡献题目'
+    url: 'https://github.com/Alessandro-Pang/fe-interview'
+
+featureGrid:
+  enable: true
+  weight: 20
+  template: feature grid
+  title: '为什么选择前端面试题库？'
+  subtitle: '前端面试题库是一个基于多个开源题库的资源平台，涵盖热门技术栈和核心知识点。无论是准备面试还是提升技能，这里都能满足你的需求。以下是我们的核心特性：'
+  items:
+    - title: '全面覆盖'
+      icon: 'library_books'
+      description: '基于多个开源题库，涵盖 ​**HTML**、**CSS**、**JavaScript**、**React**、**Vue**、**Node.js**​ 等主流技术栈，满足不同岗位的面试需求。'
+    - title: '分类清晰'
+      icon: 'category'
+      description: '题目按技术栈和难度分类，支持按关键词搜索，方便快速定位所需内容，提升学习效率。'
+    - title: '实时更新'
+      icon: 'update'
+      description: '基于多个开源题库，定期更新最新面试题和热门考点，确保内容与时俱进。'
+    - title: '详细解析'
+      icon: 'question_answer'
+      description: '每道题目都附带详细解析和参考答案，结合多个开源题库的优质内容，帮助你深入理解知识点。'
+    - title: '面试技巧'
+      icon: 'tips_and_updates'
+      description: '提供实用的面试技巧和常见问题解答，结合开源社区的智慧，帮助你从技术能力到沟通表达全面提升。'
+    - title: '社区贡献'
+      icon: 'groups'
+      description: '基于多个开源题库，支持用户贡献题目和解析，共建高质量面试资源，打造前端开发者社区。'
+    - title: '移动端友好'
+      icon: 'phone_iphone'
+      description: '支持移动端浏览，随时随地刷题学习，充分利用碎片时间。'
+    - title: '性能优化'
+      icon: 'speed'
+      description: '网站加载速度快，支持离线缓存，提供流畅的学习体验。'
+    - title: '免费开源'
+      icon: 'favorite'
+      description: '基于多个开源题库，完全免费开源，代码和题目均可自由使用，欢迎 Star 和 Fork 我们的 GitHub 项目。'
+
+imageCompare:
+  enable: false
+  weight: 30
+  template: image compare
