@@ -2,7 +2,7 @@
  * @Author: zi.yang
  * @Date: 2025-03-03 11:32:10
  * @LastEditors: zi.yang
- * @LastEditTime: 2025-03-03 18:10:37
+ * @LastEditTime: 2025-03-03 18:24:33
  * @Description:
  * @FilePath: /fe-interview/README.md
 -->
@@ -24,7 +24,7 @@
 
 ## 🌐 在线访问
 
-**[立即访问在线文档](http://alexpang.cn/fe-interview)** | **[本地运行指南](#本地运行)**
+**[立即访问在线文档](https://alexpang.cn/fe-interview)** | **[本地运行指南](#本地运行)**
 
 ## 🎯 项目特性
 
@@ -39,7 +39,7 @@
 
 ### 在线访问
 
-直接访问部署好的站点：[http://alexpang.cn/fe-interview](http://alexpang.cn/fe-interview)
+直接访问部署好的站点：[https://alexpang.cn/fe-interview](https://alexpang.cn/fe-interview)
 
 ### 本地运行
 
