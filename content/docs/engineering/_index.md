@@ -1,11 +1,3 @@
-<!--
- * @Author: zi.yang
- * @Date: 2025-03-03 17:08:48
- * @LastEditors: zi.yang
- * @LastEditTime: 2025-03-03 18:58:34
- * @Description: 
- * @FilePath: /fe-interview/content/docs/quickstart.md
--->
 +++
 weight = 100
 date = "2023-05-03T22:37:22+01:00"
@@ -26,5 +18,3 @@ Navigate to the root of your Hugo project and use the `hugo new` command to crea
 ```shell
 hugo new docs/examplepage.md
 ```
-
-...
