@@ -1,4 +1,4 @@
-baseURL = 'https://alexpang.cn/fe-interview'
+baseURL = 'https://alexpang.cn/'
 languageCode = 'en-us'
 title = '子洋前端题库'
 

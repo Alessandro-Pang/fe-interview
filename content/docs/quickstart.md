@@ -1,23 +1,15 @@
-<!--
- * @Author: zi.yang
- * @Date: 2025-03-03 17:08:48
- * @LastEditors: zi.yang
- * @LastEditTime: 2025-03-03 18:58:34
- * @Description: 
- * @FilePath: /fe-interview/content/docs/quickstart.md
--->
-+++
-weight = 100
-date = "2023-05-03T22:37:22+01:00"
-draft = true
-author = "Colin Wilson"
-title = "Quickstart"
-icon = "rocket_launch"
-toc = true
-description = "A quickstart guide to creating new content in Lotus Docs"
-publishdate = "2023-05-03T22:37:22+01:00"
-tags = ["Beginners"]
-+++
+---
+weight: 100
+date: "2023-05-03T22:37:22+01:00"
+draft: true
+author: "zi.Yang"
+title: "QuickStart"
+icon: "rocket_launch"
+toc: true
+description: "占位内容测试."
+publishdate: "2023-05-03T22:37:22+01:00"
+tags: ["example"]
+---
 
 ## Create New Content
 
