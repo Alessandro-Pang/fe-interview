@@ -129,7 +129,10 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+Thumbs.db
+.DS_Store
 .cache
 .hugo_build.lock
 .vscode
-/public/*
+public
+resources
