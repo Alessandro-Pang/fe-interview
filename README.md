@@ -2,11 +2,11 @@
  * @Author: zi.yang
  * @Date: 2025-03-03 11:32:10
  * @LastEditors: zi.yang
- * @LastEditTime: 2025-03-03 18:24:33
+ * @LastEditTime: 2025-03-03 18:49:32
  * @Description:
  * @FilePath: /fe-interview/README.md
 -->
-# 🚀 fe-interview | 前端面试题库
+# 🚀 fe-interview | 子洋前端面试题库
 
 <div align="center">
   <a href="https://github.com/Alessandro-Pang/fe-interview">

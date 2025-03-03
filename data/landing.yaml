@@ -2,7 +2,7 @@ hero:
   enable: true
   weight: 10
   template: 'hero'
-  title: '子洋前端面试题库'
+  title: '子洋前端题库'
   subtitle: '一个专注于前端开发的面试题库，涵盖 ​**HTML**、**CSS**、**JavaScript**、**React**、**Vue**​ 等热门技术栈。帮助你快速掌握面试核心知识点，轻松应对前端面试挑战！'
   info: '**免费开源**，持续更新中。欢迎贡献你的面试题！'
 
