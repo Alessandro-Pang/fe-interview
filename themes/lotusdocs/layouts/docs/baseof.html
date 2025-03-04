@@ -49,7 +49,7 @@
                                                     {{ with .Params.icon }}
                                                         {{ if strings.HasSuffix . ".svg" }}
                                                             <i class="material-icons title-icon me-2 p-2">
-                                                                <img width="100%" src="{{ . }}" alt="title-icon" />
+                                                                <img width="100%" src="{{ site.BaseURL }}{{ . }}" alt="title-icon" />
                                                             </i>
                                                         {{ else }} 
                                                             <i class="material-icons title-icon me-2">{{- . | default "article" }}</i>
