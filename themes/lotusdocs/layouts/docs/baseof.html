@@ -46,7 +46,15 @@
                                         <div class="docs-content col-12 {{ if .IsNode }}{{ else }}{{ if site.Params.docs.toc | default true }}{{ if and (ne .Params.toc false) (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") }}col-xl-9{{else}}{{end}}{{ else }}{{ end }}{{ end }} mt-0">
                                             <div class="mb-0 d-flex">
                                                 {{ if site.Params.docs.titleIcon | default false }}
-                                                <i class="material-icons title-icon me-2">{{- .Params.icon | default "article" }}</i>
+                                                    {{ with .Params.icon }}
+                                                        {{ if strings.HasSuffix . ".svg" }}
+                                                            <i class="material-icons title-icon me-2 p-2">
+                                                                <img width="100%" src="{{ . }}" alt="title-icon" />
+                                                            </i>
+                                                        {{ else }} 
+                                                            <i class="material-icons title-icon me-2">{{- . | default "article" }}</i>
+                                                        {{ end }}
+                                                    {{end}}
                                                 {{ end }}
                                                 <h1 class="content-title mb-0">
                                                     {{ $currentPage.Title }}
