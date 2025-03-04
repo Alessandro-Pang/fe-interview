@@ -1,0 +1,6 @@
+baseURL = 'https://fe-interview.pangcy.cn'
+
+
+[params]
+  [params.docs]
+    logoLinkURL = "https://fe-interview.pangcy.cn"
