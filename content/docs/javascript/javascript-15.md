@@ -1,6 +1,6 @@
 ---
 weight: 2500
-date: "2025-03-04T04:50:23.374Z"
+date: "2025-03-04T06:58:24.482Z"
 draft: false
 author: "zi.Yang"
 title: "原型链类型检测"

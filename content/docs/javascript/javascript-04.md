@@ -1,6 +1,6 @@
 ---
 weight: 1400
-date: "2025-03-04T04:50:23.373Z"
+date: "2025-03-04T06:58:24.481Z"
 draft: false
 author: "zi.Yang"
 title: "typeof null的返回值问题"
