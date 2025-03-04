@@ -1,6 +1,6 @@
 name: '🐛 Bug Report / 题目纠错'
 description: 'Report incorrect questions or answers / 反馈题目错误或答案不准确'
-title: '[Bug]: Question Title/ID / 题目名称/编号'
+title: '[Bug]: '
 labels: ['bug']
 body:
   - type: dropdown

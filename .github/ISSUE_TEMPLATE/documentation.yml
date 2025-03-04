@@ -1,6 +1,6 @@
 name: '📚 Documentation Issue / 文档问题'
 description: 'Report unclear documentation / 反馈文档不清晰或需要改进'
-title: '[Docs]: Document Path/Name / 文档路径/名称'
+title: '[Docs]: '
 labels: ['documentation']
 body:
   - type: textarea

@@ -1,6 +1,6 @@
 name: '💡 Feature Suggest / 功能建议'
 description: 'Suggest website improvements / 提出网站改进建议'
-title: '[Feat]: Brief Description / 简要描述建议'
+title: '[Feat]: '
 labels: ['enhancement']
 body:
   - type: dropdown

@@ -1,6 +1,6 @@
 name: '✨ New Question Request / 新题请求'
 description: 'Request to add new interview question / 请求添加新的面试题目'
-title: '[Feat]: Technology Area (e.g. JavaScript) / 技术方向 (如 JavaScript)'
+title: '[Feat]: '
 labels: ['enhancement']
 body:
   - type: textarea
