@@ -24,7 +24,7 @@
 
 ## 🌐 在线访问
 
-**[立即访问在线文档](https://alexpang.cn/fe-interview)** | **[本地运行指南](#本地运行)**
+**[立即访问在线文档](https://fe-interview.pangcy.cn)** | **[本地运行指南](#本地运行)**
 
 ## 🎯 项目特性
 
@@ -39,7 +39,7 @@
 
 ### 在线访问
 
-直接访问部署好的站点：[https://alexpang.cn/fe-interview](https://alexpang.cn/fe-interview)
+直接访问部署好的站点：[https://fe-interview.pangcy.cn](https://fe-interview.pangcy.cn)
 
 ### 本地运行
 
