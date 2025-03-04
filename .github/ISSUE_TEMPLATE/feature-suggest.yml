@@ -7,7 +7,6 @@ body:
     attributes:
       label: 'Feature Category / 功能类型'
       options:
-        - 'Please select / 请选择类型'
         - 'UI/UX Improvement / 界面体验优化'
         - 'New Feature Module / 新功能模块'
         - 'Performance Optimization / 性能优化'

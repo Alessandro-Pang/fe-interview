@@ -6,25 +6,92 @@ body:
   - type: textarea
     attributes:
       label: 'Question Content / 题目内容'
-      description: 'Complete question description / 完整的题干描述'
+      description: 'Complete question description with sample cases / 包含示例的完整题干描述'
+      placeholder: |
+        ### 代码类题目示例 / Coding Example:
+        "实现一个支持以下功能的深拷贝函数：
+        1. 处理循环引用
+        2. 支持Date/RegExp等特殊对象
+        3. 保留原型链
+
+        // 测试用例
+        const obj = { a: new Date(), b: { c: obj } };
+        const cloned = deepClone(obj);"
+
+        ### 理论类题目示例 / Theory Example:
+        "解释浏览器事件循环机制，并分析以下代码的输出顺序：
+        console.log('1');
+        setTimeout(() => console.log('2'), 0);
+        Promise.resolve().then(() => console.log('3'));
+        console.log('4');"
     validations:
       required: true
+
   - type: textarea
     attributes:
       label: 'Reference Answer / 参考答案'
-      description: 'Use code blocks / 使用代码块格式包裹代码'
+      description: 'Use code blocks with language identifier / 使用带语言标识的代码块'
+      placeholder: |
+        ```javascript
+        function deepClone(obj, map = new WeakMap()) {
+          if (obj instanceof Date) return new Date(obj);
+          // 实现细节...
+        }
+        ```
+        ```typescript
+        interface Cloneable<T> {
+          clone(): T;
+        }
+        ```
+    validations:
+      required: true
+
   - type: dropdown
     attributes:
       label: 'Difficulty Level / 题目难度'
       options:
-        - 'Beginner / 初级'
-        - 'Intermediate / 中级'
-        - 'Advanced / 高级'
+        - 'Beginner / 初级（适合0-1年经验）'
+        - 'Intermediate / 中级（适合2-3年经验）'
+        - 'Advanced / 高级（适合4年+经验）'
+    validations:
+      required: true
+
   - type: textarea
     attributes:
       label: 'Suggested Path / 推荐分类路径'
-      description: 'e.g. content/docs/react/hooks.md / 例如 content/docs/react/hooks.md'
+      description: 'Path format: content/docs/[category]/[topic]/filename.md / 路径格式: content/docs/[分类]/[主题]/文件名.md'
+      placeholder: |
+        content/docs/javascript/object-oriented/prototype.md
+        content/docs/react/advanced-patterns/render-props.md
+        content/docs/browser/event-loop/mechanism.md
+    validations:
+      required: true
+
   - type: textarea
     attributes:
       label: 'Related Questions / 关联题目'
-      placeholder: 'Paths to similar questions / 相似题目的文件路径'
+      description: 'Existing question paths (max 3) / 已存在的题目路径（最多3条）'
+      placeholder: |
+        content/docs/javascript/scope/closure.md
+        content/docs/typescript/advanced-types/conditional-types.md
+        (无关联请留空)
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: 'Validation Cases / 验证用例'
+      description: 'Provide test cases (code/input-output pairs) / 提供测试用例（代码/输入输出对）'
+      placeholder: |
+        ```javascript
+        // 测试循环引用
+        const obj = { a: {} };
+        obj.a.circular = obj;
+        console.assert(deepClone(obj).a.circular !== obj);
+
+        // 测试Date对象
+        const date = new Date();
+        console.assert(deepClone(date).getTime() === date.getTime());
+        ```
+    validations:
+      required: false

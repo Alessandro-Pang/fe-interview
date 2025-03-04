@@ -18,7 +18,6 @@ body:
     attributes:
       label: 'Issue Category / 问题分类'
       options:
-        - 'Please select / 请选择分类'
         - 'Unclear terminology / 术语不清晰'
         - 'Incomplete steps / 步骤不完整'
         - 'Missing examples / 缺少示例'
