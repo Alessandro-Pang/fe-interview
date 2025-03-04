@@ -23,7 +23,7 @@ closes #
 ## ✅ 检查清单
 
 - [ ] 确认题目内容不涉及任何企业机密
-- [ ] 已遵循 [Markdown 规范](链接到格式指南)
+- [ ] 已遵循 [Markdown 规范](https://github.com/DavidAnson/markdownlint/)
 - [ ] 文档分类正确（如 JavaScript 题放在 `/content/docs/javascript/`）
 - [ ] 本地测试通过（使用 `hugo server` 预览效果）
 - [ ] 包含必要的代码示例（如果适用）
