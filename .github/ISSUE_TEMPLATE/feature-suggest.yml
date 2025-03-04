@@ -63,7 +63,6 @@ body:
       placeholder: |
         - [MDN交互式示例](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)
         - [React新文档搜索功能](https://beta.reactjs.org/learn)
-      pattern: '(https?://(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:/\S*)?)'
     validations:
       required: false
   - type: textarea

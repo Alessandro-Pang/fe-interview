@@ -24,7 +24,6 @@ body:
         content/docs/react/hooks/use-state.md
     validations:
       required: true
-      pattern: '^content/docs/[a-zA-Z0-9\-/]+\.md$'
   - type: textarea
     attributes:
       label: 'Error Description / 错误描述'
@@ -61,7 +60,6 @@ body:
         - [MDN Closure Documentation](https://developer.mozilla.org/...)
         - 《JavaScript权威指南》第7章 P.205
         - ECMAScript 2023 Specification Section 15.8.4
-      pattern: '(https?://\S+|ISBN\s*\d{3}-\d-\d{3}-\d{5}-\d)'
     validations:
       required: false
   - type: textarea
