@@ -1,0 +1,23 @@
+name: '💡 Feature Suggest / 功能建议'
+description: 'Suggest website improvements / 提出网站改进建议'
+title: '[Feat]: Brief Description / 简要描述建议'
+labels: ['enhancement']
+body:
+  - type: textarea
+    attributes:
+      label: 'Feature Description / 功能描述'
+      description: 'Detailed description of requested feature / 详细描述您希望实现的功能'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 'Problem to Solve / 解决什么问题'
+      description: 'Current pain points or usage scenarios / 说明当前痛点或使用场景'
+  - type: textarea
+    attributes:
+      label: 'Proposed Solution / 建议方案'
+      placeholder: 'Implementation ideas if any / 如果有实现思路请说明'
+  - type: textarea
+    attributes:
+      label: 'Reference Cases / 参考案例'
+      placeholder: 'Example links of similar features / 其他网站的类似功能示例链接'

@@ -1,0 +1,30 @@
+name: '✨ New Question Request / 新题请求'
+description: 'Request to add new interview question / 请求添加新的面试题目'
+title: '[Feat]: Technology Area (e.g. JavaScript) / 技术方向 (如 JavaScript)'
+labels: ['enhancement']
+body:
+  - type: textarea
+    attributes:
+      label: 'Question Content / 题目内容'
+      description: 'Complete question description / 完整的题干描述'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 'Reference Answer / 参考答案'
+      description: 'Use code blocks ```jsx / 使用代码块格式 ```jsx 包裹代码'
+  - type: dropdown
+    attributes:
+      label: 'Difficulty Level / 题目难度'
+      options:
+        - 'Beginner / 初级'
+        - 'Intermediate / 中级'
+        - 'Advanced / 高级'
+  - type: textarea
+    attributes:
+      label: 'Suggested Path / 推荐分类路径'
+      description: 'e.g. content/docs/react/hooks.md / 例如 content/docs/react/hooks.md'
+  - type: textarea
+    attributes:
+      label: 'Related Questions / 关联题目'
+      placeholder: 'Paths to similar questions / 相似题目的文件路径'

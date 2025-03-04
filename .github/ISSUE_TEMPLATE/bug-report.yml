@@ -1,0 +1,36 @@
+name: '🐛 Bug Report / 题目纠错'
+description: 'Report incorrect questions or answers / 反馈题目错误或答案不准确'
+title: '[Bug]: Question Title/ID / 题目名称/编号'
+labels: ['bug']
+body:
+  - type: dropdown
+    attributes:
+      label: 'Error Type / 错误类型'
+      options:
+        - 'Incorrect question stem / 题干错误'
+        - 'Wrong answer / 答案错误'
+        - 'Code example error / 代码示例错误'
+        - 'Misclassification / 题目分类错误'
+        - 'Other / 其他'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 'Question Path / 题目路径'
+      description: 'e.g. content/docs/javascript/closure.md / 例如 content/docs/javascript/closure.md'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 'Error Description / 错误描述'
+      description: 'Describe the issue and expected correct content / 请具体说明错误表现和正确应该是什么'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 'Suggested Correction / 建议修正内容'
+      placeholder: 'Provide corrected Markdown snippet / 请提供修正后的 Markdown 片段'
+  - type: textarea
+    attributes:
+      label: 'References / 参考资料'
+      placeholder: 'Documentation links or book pages / 相关文档链接或书籍页码'

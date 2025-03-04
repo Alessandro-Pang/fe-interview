@@ -1,0 +1,23 @@
+name: '📚 Documentation Issue / 文档问题'
+description: 'Report unclear documentation / 反馈文档不清晰或需要改进'
+title: '[Docs]: Document Path/Name / 文档路径/名称'
+labels: ['documentation']
+body:
+  - type: textarea
+    attributes:
+      label: 'Document Path / 文档路径'
+      description: 'e.g. content/docs/quickstart.md / 例如 content/docs/quickstart.md'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 'Issue Description / 问题描述'
+      description: 'Specify unclear content / 具体说明哪里不清晰或需要改进'
+  - type: textarea
+    attributes:
+      label: 'Suggested Changes / 建议修改'
+      placeholder: 'Proposed modifications (optional) / 建议的修改内容（可选）'
+  - type: textarea
+    attributes:
+      label: 'Screenshot / 截图'
+      placeholder: 'Upload screenshot (optional) / 可上传问题位置截图（可选）'
