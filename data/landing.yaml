@@ -20,7 +20,7 @@ hero:
 
   image:
     path: 'images'
-    filename: 'lotus_docs_screenshot.png'
+    filename: 'docs_screenshot.png'
     alt: '前端面试题库截图'
     boxShadow: true
     rounded: true

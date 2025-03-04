@@ -4,11 +4,13 @@ title = 'ZiYang FrontEnd Interview'
 contentDir = "content"
 enableEmoji = true
 enableGitInfo = true
+tags = true
 
 [build]
   noJSConfigInAssets = true
 
 [module]
+    replacements = "github.com/colinwilson/lotusdocs -> lotusdocs"
     [[module.imports]]
         path = "github.com/colinwilson/lotusdocs"
         disable = false

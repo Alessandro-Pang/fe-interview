@@ -1,1 +1,6 @@
 baseURL = 'https://alexpang.cn/fe-interview'
+
+
+[params]
+  [params.docs]
+    logoLinkURL = "https://alexpang.cn/fe-interview"
