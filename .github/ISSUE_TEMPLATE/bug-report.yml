@@ -11,26 +11,63 @@ body:
         - 'Wrong answer / 答案错误'
         - 'Code example error / 代码示例错误'
         - 'Misclassification / 题目分类错误'
+        - 'Terminology error / 术语错误'
         - 'Other / 其他'
     validations:
       required: true
   - type: textarea
     attributes:
       label: 'Question Path / 题目路径'
-      description: 'e.g. content/docs/javascript/closure.md / 例如 content/docs/javascript/closure.md'
+      description: 'Full Markdown file path / 完整的Markdown文件路径'
+      placeholder: |
+        content/docs/javascript/closure.md
+        content/docs/react/hooks/use-state.md
     validations:
       required: true
+      pattern: '^content/docs/[a-zA-Z0-9\-/]+\.md$'
   - type: textarea
     attributes:
       label: 'Error Description / 错误描述'
-      description: 'Describe the issue and expected correct content / 请具体说明错误表现和正确应该是什么'
+      description: 'Describe the specific error and expected correct content / 具体描述错误表现及正确内容'
+      placeholder: |
+        ### Example / 示例:
+        - 题干中「闭包的定义」描述不准确，ECMAScript规范中实际定义为...
+        - 参考答案未处理Date对象克隆，正确实现应包含...
+        - 该题目应归类到「浏览器原理」而非「JavaScript基础」
     validations:
       required: true
   - type: textarea
     attributes:
       label: 'Suggested Correction / 建议修正内容'
-      placeholder: 'Provide corrected Markdown snippet / 请提供修正后的 Markdown 片段'
+      description: 'Provide corrected content in Markdown format / 使用Markdown格式提供修正内容'
+      placeholder: |
+        ```markdown
+        ## 参考答案
+
+        ```javascript
+        function deepClone(obj, map = new WeakMap()) {
+          if (obj instanceof Date) return new Date(obj)
+          // 修正后的实现...
+        }
+        ```
+        ```
+    validations:
+      required: false
   - type: textarea
     attributes:
       label: 'References / 参考资料'
-      placeholder: 'Documentation links or book pages / 相关文档链接或书籍页码'
+      description: 'Official documentation or authoritative references / 官方文档或权威参考资料'
+      placeholder: |
+        - [MDN Closure Documentation](https://developer.mozilla.org/...)
+        - 《JavaScript权威指南》第7章 P.205
+        - ECMAScript 2023 Specification Section 15.8.4
+      pattern: '(https?://\S+|ISBN\s*\d{3}-\d-\d{3}-\d{5}-\d)'
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: 'Screenshots / 问题截图'
+      description: 'Upload screenshots highlighting the issue (optional) / 上传问题截图（可选）'
+      placeholder: |
+        ![错误示例](https://via.placeholder.com/600x400.png?text=截图示例)
+        ![修正建议](https://via.placeholder.com/600x400.png?text=对比示例)

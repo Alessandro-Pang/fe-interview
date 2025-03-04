@@ -3,21 +3,90 @@ description: 'Suggest website improvements / 提出网站改进建议'
 title: '[Feat]: Brief Description / 简要描述建议'
 labels: ['enhancement']
 body:
-  - type: textarea
+  - type: dropdown
     attributes:
-      label: 'Feature Description / 功能描述'
-      description: 'Detailed description of requested feature / 详细描述您希望实现的功能'
+      label: 'Feature Category / 功能类型'
+      options:
+        - 'Please select / 请选择类型'
+        - 'UI/UX Improvement / 界面体验优化'
+        - 'New Feature Module / 新功能模块'
+        - 'Performance Optimization / 性能优化'
+        - 'Interactive Enhancement / 交互增强'
+        - 'Content Organization / 内容组织'
+        - 'Other / 其他'
     validations:
       required: true
   - type: textarea
     attributes:
-      label: 'Problem to Solve / 解决什么问题'
-      description: 'Current pain points or usage scenarios / 说明当前痛点或使用场景'
+      label: 'Feature Proposal / 功能提案'
+      description: 'Detailed description with user scenarios / 含使用场景的详细描述'
+      placeholder: |
+        ### Example / 示例:
+        ​**背景**：当前题目搜索仅支持标题关键字匹配  
+        ​**建议**：增加以下搜索能力：  
+        - 支持代码片段内容搜索  
+        - 允许组合筛选（难度+技术栈+题型）  
+        - 添加相似题目推荐功能  
+        ​**用户价值**：提升高频刷题用户的检索效率
+    validations:
+      required: true
   - type: textarea
     attributes:
-      label: 'Proposed Solution / 建议方案'
-      placeholder: 'Implementation ideas if any / 如果有实现思路请说明'
+      label: 'Problem Scenario / 问题场景'
+      description: 'When and where does this problem occur? / 该问题在什么场景下出现'
+      placeholder: |
+        ### Example / 示例:
+        "当用户想查找所有包含『虚拟DOM』的相关题目时，需要逐个打开文件查看内容"
+        "移动端访问时，代码示例的横向滚动体验不佳"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 'Technical Spec / 技术方案'
+      description: 'Proposed technical implementation (optional) / 建议的技术实现方案（可选）'
+      placeholder: |
+        ```markdown
+        ## 实现思路
+        1. 使用FlexSearch建立题目内容索引  
+        2. 新增SearchService处理复合查询  
+        3. 前端增加搜索过滤器组件
+
+        ## 接口设计
+        GET /api/search?q=闭包&difficulty=中级&tech=javascript
+        ```
+    validations:
+      required: false
   - type: textarea
     attributes:
       label: 'Reference Cases / 参考案例'
-      placeholder: 'Example links of similar features / 其他网站的类似功能示例链接'
+      description: 'Verified working examples / 经验证的可行案例'
+      placeholder: |
+        - [MDN交互式示例](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)
+        - [React新文档搜索功能](https://beta.reactjs.org/learn)
+      pattern: '(https?://(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:/\S*)?)'
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: 'Visual Design / 视觉设计'
+      description: 'Screenshots or wireframes (Markdown supported) / 截图或线框图（支持Markdown）'
+      placeholder: |
+        ![设计原型](https://example.com/wireframe.jpg)
+        ```mermaid
+        graph TD
+          A[搜索框] --> B(过滤器)
+          B --> C{后端API}
+          C --> D[(搜索索引)]
+        ```
+    validations:
+      required: false
+  - type: dropdown
+    attributes:
+      label: 'Priority Level / 优先级建议'
+      options:
+        - 'Critical (blocking users) / 关键性（影响核心功能）'
+        - 'High (frequent pain point) / 高（高频痛点）'
+        - 'Medium (quality improvement) / 中（体验优化）'
+        - 'Low (nice to have) / 低（锦上添花）'
+    validations:
+      required: true

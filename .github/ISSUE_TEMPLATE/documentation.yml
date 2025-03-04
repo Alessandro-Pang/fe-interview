@@ -6,18 +6,88 @@ body:
   - type: textarea
     attributes:
       label: 'Document Path / 文档路径'
-      description: 'e.g. content/docs/quickstart.md / 例如 content/docs/quickstart.md'
+      description: 'Full path with language prefix (if applicable) / 完整路径（含语言前缀）'
+      placeholder: |
+        content/docs/en/javascript/closure.md
+        content/docs/zh/react/hooks.md
+        /zh/docs/vue3/composition-api.md
+    validations:
+      required: true
+      pattern: '^(content/docs/(en|zh)|/(en|zh)/docs)/[a-zA-Z0-9\-/]+\.md$'
+  - type: dropdown
+    attributes:
+      label: 'Issue Category / 问题分类'
+      options:
+        - 'Please select / 请选择分类'
+        - 'Unclear terminology / 术语不清晰'
+        - 'Incomplete steps / 步骤不完整'
+        - 'Missing examples / 缺少示例'
+        - 'Code sample error / 代码示例错误'
+        - 'Structural issues / 结构问题'
+        - 'Translation error / 翻译错误'
+        - 'Other / 其他'
     validations:
       required: true
   - type: textarea
     attributes:
-      label: 'Issue Description / 问题描述'
-      description: 'Specify unclear content / 具体说明哪里不清晰或需要改进'
+      label: 'Issue Context / 问题上下文'
+      description: 'Where exactly is the problem located? / 问题具体位置'
+      placeholder: |
+        ### Example / 示例:
+        "第三章第二节「响应式原理」第四段"
+        "Quick Start 文档的 Step 3 代码块"
+        "API Reference 的 useReducer 类型定义"
+    validations:
+      required: true
   - type: textarea
     attributes:
-      label: 'Suggested Changes / 建议修改'
-      placeholder: 'Proposed modifications (optional) / 建议的修改内容（可选）'
+      label: 'Problem Description / 问题描述'
+      description: 'Describe the issue and its impact / 描述问题及其影响'
+      placeholder: |
+        ### Example / 示例:
+        "未解释'单向数据流'概念，导致新手理解困难"
+        "缺少错误边界处理的示例代码"
+        "中文版将'hydration'误译为'水解'，应译为'注水'"
+    validations:
+      required: true
   - type: textarea
     attributes:
-      label: 'Screenshot / 截图'
-      placeholder: 'Upload screenshot (optional) / 可上传问题位置截图（可选）'
+      label: 'Suggested Solution / 建议方案'
+      description: 'Proposed modification (Markdown format) / 修改建议（Markdown格式）'
+      placeholder: |
+        ```markdown
+        ## 响应式原理
+        Vue 使用 ​**依赖追踪**​ 机制实现响应式，当...
+
+        ```javascript
+        // 新增示例代码
+        const reactive = (obj) => {
+          return new Proxy(obj, {
+            get(target, key) {
+              track(target, key)
+              return Reflect.get(...arguments)
+            }
+          })
+        }
+        ```
+        ```
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: 'Supporting Materials / 佐证材料'
+      placeholder: |
+        - [MDN Web Docs - Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+        - 《JavaScript高级程序设计（第4版）》P.176
+        - Vue RFC ID-123
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: 'Screenshot Evidence / 截图证据'
+      description: 'Use Markdown syntax: ![description](url) / 使用Markdown语法'
+      placeholder: |
+        ![术语错误截图](https://example.com/screenshot1.jpg)
+        ![结构问题标注](https://example.com/screenshot2.png)
+    validations:
+      required: false
