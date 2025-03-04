@@ -2,13 +2,13 @@
  * @Author: zi.yang
  * @Date: 2025-03-03 11:32:10
  * @LastEditors: zi.yang
- * @LastEditTime: 2025-03-03 18:49:32
+ * @LastEditTime: 2025-03-04 20:01:06
  * @Description:
  * @FilePath: /fe-interview/README.md
 -->
-# 🚀 fe-interview | 子洋前端面试题库
 
 <div align="center">
+  <h1 style="margin: 4px 0 16px 0">🚀 fe-interview | 子洋前端面试题库</h1>
   <a href="https://github.com/Alessandro-Pang/fe-interview">
     <img alt="GitHub license" src="https://img.shields.io/github/license/Alessandro-Pang/fe-interview">
   </a>
@@ -19,6 +19,8 @@
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/Alessandro-Pang/fe-interview">
   </a>
 </div>
+
+![Alt](https://repobeats.axiom.co/api/embed/399cfc8aeb0a7d02333aef532a50d4747ddcce25.svg "Repobeats analytics image")
 
 > 一个基于 Hugo 构建的前端面试题库站点，聚合全网优质面试资源，助力开发者高效备战技术面试
 
@@ -100,6 +102,38 @@ content/
 | afatcoder | [LeetcodeTop](https://github.com/afatcoder/LeetcodeTop) | LeetcodeTop |
 | shfshanyue | [Daily-Question](https://github.com/shfshanyue/Daily-Question) | 大厂面试每日一题 |
 
+## Star History
+
+<a href="https://star-history.com/#Alessandro-Pang/fe-interview&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Alessandro-Pang/fe-interview&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Alessandro-Pang/fe-interview&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Alessandro-Pang/fe-interview&type=Date" />
+ </picture>
+</a>
+
+## Supporters
+
+<a href="https://github.com/Alessandro-Pang/fe-interview/stargazers">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://reporoster.com/stars/dark/Alessandro-Pang/fe-interview" />
+   <source media="(prefers-color-scheme: light)" srcset="https://reporoster.com/stars/light/Alessandro-Pang/fe-interview" />
+   <img alt="Star History" src="https://reporoster.com/stars/light/Alessandro-Pang/fe-interview" />
+ </picture>
+</a>
+
+<a href="https://github.com/Alessandro-Pang/fe-interview/network/members">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://reporoster.com/forks/dark/Alessandro-Pang/fe-interview" />
+   <source media="(prefers-color-scheme: light)" srcset="https://reporoster.com/forks/light/Alessandro-Pang/fe-interview" />
+   <img alt="Fork History" src="https://reporoster.com/forks/light/Alessandro-Pang/fe-interview" />
+ </picture>
+</a>
+
 ## 📄 许可证
 
 MIT License © 2024 [Alessandro-Pang](https://github.com/Alessandro-Pang)
+
+---
+
+欢迎在 [GitHub Issues](https://github.com/Alessandro-Pang/fe-interview/issues) 上讨论并提出问题或提交 Pull Request！
