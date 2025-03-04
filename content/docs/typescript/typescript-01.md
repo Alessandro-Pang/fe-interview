@@ -45,4 +45,46 @@ tags: ["typescript", "基础类型", "类型注解", "类型安全"]
 ```typescript
 let count: number = 10;
 const message: string = "Hello, TypeScript!";
+```
+### 2. 函数参数与返回值
+```typescript
+// 函数返回值类型注解
+function sum(a: number, b: number): number {
+  return a + b;
+}
 
+// 箭头函数
+const greet = (name: string): void => {
+  console.log(`Hi, ${name}!`);
+};
+```
+### 3.复杂类型组合
+使用联合类型（|）、类型别名或接口：
+```typescript
+// 联合类型
+let id: string | number = "ID-123";
+id = 456;
+
+// 类型别名
+type User = {
+  name: string;
+  age?: number;  // 可选属性
+};
+const user: User = { name: "Bob" };
+```
+### 4. 类型断言
+强制明确值的类型：
+```typescript
+const input: unknown = "123";
+const num: number = parseInt(input as string);  // 断言为 string 类型
+
+// 或使用尖括号语法（不推荐在JSX中使用）
+const anotherNum: number = <number>input;
+```
+## 四、最佳实践
+
+避免使用 any：尽量用更精确的类型（如 unknown）或联合类型替代。
+
+开启严格模式：在 tsconfig.json 中设置 strict: true，强制处理 null/undefined。
+
+优先用类型推断：如 let age = 30 隐式推断为 number，无需显式注解。
