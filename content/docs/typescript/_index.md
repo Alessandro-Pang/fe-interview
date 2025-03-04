@@ -1,7 +1,7 @@
 ---
-weight: 6000
-title: "Network"
-description: "计算机网络是非常重要的知识点，它涉及到计算机之间的通信和数据传输。在网络中，数据被封装成一个个的包（packet），通过网络协议进行传输。网络可以分为不同的层次，包括物理层、链路"
+weight: 4000
+title: "TypeScript"
+description: "TypeScript 是 JavaScript 的一个超集，它扩展了 JavaScript 的语法，提供了类型系统和一些其他特性。TypeScript 代码可以被编译成纯 JavaScript 代码，以便在浏览器或 Node.js 等"
 icon: "javascript"
 date: "2025-03-03T19:40:00+08:00"
 lastmod: "2025-03-03T19:40:00+08:00"

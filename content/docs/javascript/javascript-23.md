@@ -1,6 +1,6 @@
 ---
 weight: 3300
-date: "2025-03-04T03:02:19.579Z"
+date: "2025-03-04T04:50:23.375Z"
 draft: false
 author: "zi.Yang"
 title: "AJAX核心实现原理"

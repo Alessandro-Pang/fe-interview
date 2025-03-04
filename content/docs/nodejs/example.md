@@ -9,6 +9,8 @@ toc: true
 description: "占位内容测试."
 publishdate: "2023-05-03T22:37:22+01:00"
 tags: ["example"]
+images:
+  - /opengraph/card-base-2_hu_3a495a4d52cd2b26.png
 ---
 
 ## 占位

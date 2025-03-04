@@ -1,6 +1,6 @@
 ---
 weight: 2100
-date: "2025-03-04T03:02:19.578Z"
+date: "2025-03-04T04:50:23.374Z"
 draft: false
 author: "zi.Yang"
 title: "基本类型方法调用机制"
