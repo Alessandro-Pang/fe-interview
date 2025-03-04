@@ -1,9 +1,26 @@
 {{ define "main" }}
     <!-- override Prism's default copy messages to 'empty'. Required by CSS styling.
          see: https://prismjs.com/plugins/copy-to-clipboard/#styling -->
-    <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
+    <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="" style="margin-bottom: 20px;">
         {{ .Content }}
     </div>
+
+    <script src="https://giscus.app/client.js"
+        data-repo="Alessandro-Pang/fe-interview"
+        data-repo-id="R_kgDOOCJ7MQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOOCJ7Mc4Cnh5C"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+    </script>
 
     {{ if and .GitInfo .Site.Params.docs.repoURL -}}
         {{ partial (printf "%s/%s" ($.Scratch.Get "pathName") "gitinfo") . }}
