@@ -21,7 +21,7 @@
                                 {{ if eq .Site.Params.docs.sidebarIcons true -}}
                                     {{ if strings.HasSuffix .Params.icon ".svg" }}
                                         {{ with resources.Get .Params.icon }}
-                                            <i class="material-icons p-2 me-2" style="width: 36px; height: 36px; fill: #606770">
+                                            <i class="material-icons p-2 me-2" style="width: 36px; height: 36px;">
                                                 {{ .Content | safeHTML }}
                                             </i>
                                         {{ end }}
