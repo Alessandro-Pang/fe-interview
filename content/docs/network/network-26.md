@@ -18,12 +18,14 @@ tags:
 ## 考察点分析
 
 该题目主要考察以下核心能力维度：
+
 1. **浏览器安全机制理解**：同源策略的设计目标与具体限制维度
 2. **跨域方案技术选型**：对比不同解决方案的底层原理与适用场景
 3. **安全防护意识**：分析各方案的安全边界与风险点
 4. **工程实践能力**：根据业务场景选择最佳跨域方案
 
 具体技术评估点：
+
 - 同源策略的三要素判定（协议/域名/端口）
 - CORS预检请求触发条件与流程控制
 - JSONP的脚本注入风险与防御措施
@@ -35,9 +37,11 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 CORS > 反向代理 > JSONP > 同源策略
 
 #### 原理剖析
+
 1. **同源策略**：浏览器安全基座，限制跨源资源交互。影响XMLHttpRequest、Fetch API、Web Fonts、Web Workers等
    - 跨域写（Cross-origin writes）：默认允许（如表单提交）
    - 跨域资源嵌入（Cross-origin embedding）：需MIME类型校验
@@ -46,13 +50,15 @@ CORS > 反向代理 > JSONP > 同源策略
 2. **CORS**：
    - 简单请求：满足特定条件（GET/POST/HEAD，Content-Type为text/plain等）
    - 预检请求：非简单请求先发OPTIONS验证（复杂请求特征检测）
+
    ```http
    Access-Control-Allow-Origin: https://example.com
    Access-Control-Allow-Methods: POST, GET
    Access-Control-Allow-Headers: X-Custom-Header
    ```
 
-3. **JSONP**：利用<script>标签不受同源限制的特性
+3. **JSONP**：利用`<script>`标签不受同源限制的特性
+
    ```javascript
    function handleResponse(data) {
      console.log('Received:', data);
@@ -63,6 +69,7 @@ CORS > 反向代理 > JSONP > 同源策略
    ```
 
 4. **反向代理**：服务端中转实现同源访问
+
    ```nginx
    location /api/ {
      proxy_pass http://backend-server:8080/;
@@ -71,6 +78,7 @@ CORS > 反向代理 > JSONP > 同源策略
    ```
 
 #### 安全性差异对比
+
 | 方案       | 安全风险                          | 防御措施                     |
 |------------|---------------------------------|----------------------------|
 | CORS       | 配置错误导致CSRF                | 严格设置allow-origin        |
@@ -88,6 +96,7 @@ CORS > 反向代理 > JSONP > 同源策略
 ## 解决方案
 
 ### CORS配置示例（Node.js）
+
 ```javascript
 const express = require('express');
 const cors = require('cors');
@@ -108,6 +117,7 @@ app.options('/data', (req, res) => {
 ```
 
 ### 可扩展建议
+
 1. 高并发场景：预检请求缓存优化（Access-Control-Max-Age）
 2. 多环境适配：通过环境变量动态配置允许源
 3. 安全加固：配置CORS中间件白名单校验
