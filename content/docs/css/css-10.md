@@ -32,12 +32,15 @@ tags:
 ## 技术解析
 
 ### 圣杯 vs 双飞翼
+
 **关键知识点**：
+
 1. 浮动布局 > 负边距 > 定位控制
 2. 圣杯布局依赖父容器padding预留空间
 3. 双飞翼通过嵌套div设置margin避开定位
 
 **原理**：
+
 ```html
 <!-- 圣杯布局 -->
 <div class="container">
@@ -55,10 +58,13 @@ tags:
   <div class="right"></div>
 </div>
 ```
+
 圣杯布局使用相对定位+padding实现留白，双飞翼通过.center > .inner的margin腾出空间，避免定位导致的渲染问题。
 
 ### 水平垂直居中
+
 **关键方案**：
+
 1. Flex布局（display: flex + margin:auto）
 2. Grid布局（place-items: center）
 3. 绝对定位+transform
@@ -66,11 +72,14 @@ tags:
 5. 绝对定位+负margin（已知尺寸）
 
 **误区**：
+
 - grid布局在移动端支持良好但需注意旧版浏览器
 - transform方案会导致模糊文本问题
 
 ### 1px解决方案
+
 **技术路线**：
+
 ```css
 .border {
   position: relative;
@@ -86,10 +95,13 @@ tags:
   transform: scaleY(0.5); /* DPR适配 */
 }
 ```
+
 通过伪元素+transform缩放实现物理1px，需配合viewport的meta标签设置。
 
 ### 自适应正方形
+
 **实现原理**：
+
 ```css
 .square {
   width: 20%;
@@ -97,6 +109,7 @@ tags:
   background: #ccc;
 }
 ```
+
 利用W3C规范中padding百分比以包含块宽度为计算基准的特性。
 
 ## 问题解答
@@ -105,6 +118,7 @@ tags:
 圣杯布局通过父容器padding预留空间配合相对定位实现三栏布局，双飞翼采用嵌套div设置margin替代定位，解决圣杯布局在窄屏下的样式错乱问题。
 
 2. **水平垂直居中方案**：
+
 - Flex：最简单方案（display: flex + justify-content: center + align-items: center）
 - Grid：代码最简洁但兼容性要求高
 - transform：适合未知元素尺寸
@@ -118,6 +132,7 @@ tags:
 利用padding-top百分比基于父元素宽度的特性，当width与padding-top值相同时，形成1:1的正方形。注意设置height:0避免内容撑开容器。
 
 ## 代码示例
+
 ```css
 /* 双飞翼布局核心代码 */
 .container {
@@ -151,6 +166,7 @@ tags:
 ```
 
 ## 深度追问
+
 1. Flex布局中align-items与align-content的区别？
    - 前者控制单行对齐，后者控制多行间距
 

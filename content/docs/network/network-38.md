@@ -21,11 +21,13 @@ tags:
 ### 考察点分析
 
 **核心能力维度**：
+
 1. 密码学基础：非对称加密体系的应用理解
 2. 网络安全机制：HTTPS握手过程核心环节
 3. 信任链体系：PKI（公钥基础设施）架构认知
 
 **技术评估点**：
+
 - 数字签名算法（RSA/ECDSA）实现原理
 - 证书链逐级验证过程
 - 根证书预置信任机制
@@ -40,6 +42,7 @@ tags:
 哈希算法 > 非对称加密 > X.509证书结构 > 信任链传递
 
 **原理剖析**：
+
 1. **数字签名生成**：
    - 发送方使用SHA-256计算数据哈希值
    - 用私钥加密哈希值生成数字签名
@@ -52,18 +55,21 @@ tags:
    - 对比哈希值A与B验证数据完整性
 
 3. **证书链验证**：
+
    ```mermaid
    graph LR
    ServerCert -->|由| IntermediateCA
    IntermediateCA -->|由| RootCA
    RootCA -->|预置在| TrustStore
    ```
+
    - 浏览器逐级验证证书签名有效性
    - 检查证书有效期和域名匹配
    - 确认根证书在可信存储库中
    - 验证证书未被吊销（CRL/OCSP）
 
 **常见误区**：
+
 - 误认为证书加密传输数据（实际用于密钥交换）
 - 忽略证书链中间环节验证
 - 混淆代码签名证书与SSL证书应用场景
@@ -79,6 +85,7 @@ tags:
 ### 解决方案
 
 **证书验证流程伪代码**：
+
 ```javascript
 function verifyCertificate(certChain) {
   // 从服务端证书开始逐级验证
@@ -88,6 +95,7 @@ function verifyCertificate(certChain) {
 ```
 
 **优化建议**：
+
 1. 使用ECC证书减少计算开销
 2. 开启OCSP Stapling避免实时查询吊销状态
 3. 采用Certificate Transparency防伪证书

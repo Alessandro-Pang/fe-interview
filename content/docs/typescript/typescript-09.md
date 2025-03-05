@@ -17,6 +17,7 @@ tags:
 ## 考察点分析
 
 该题主要考查候选人对TypeScript类型系统设计原则的理解程度，核心评估维度包括：
+
 1. **类型系统设计理念**：区分接口(interface)与类型别名(type)在TypeScript中的定位差异
 2. **声明合并机制**：理解接口特有的声明合并特性及其使用场景
 3. **可扩展性对比**：掌握接口继承与类型别名交叉运算的本质区别
@@ -25,12 +26,15 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 1. 声明合并（Declaration Merging）
 2. 类型扩展机制
 3. 类型系统设计哲学
 
 ### 原理剖析
+
 接口的声明合并特性允许**同名接口自动合并成员**，常用于扩展第三方库类型定义。例如：
+
 ```typescript
 interface User { name: string }
 interface User { age: number }
@@ -40,18 +44,23 @@ interface User { age: number }
 类型别名使用`type`定义时，**重复声明会报错**。这种设计差异源于接口的开放扩展特性（Open-ended）与类型别名的封闭特性。
 
 在扩展性方面，接口采用`extends`继承：
+
 ```typescript
 interface Animal { name: string }
 interface Dog extends Animal { bark(): void }
 ```
+
 类型别名使用交叉类型实现类似效果：
+
 ```typescript
 type Animal = { name: string }
 type Dog = Animal & { bark(): void }
 ```
+
 虽然功能相似，但类型别名的交叉运算在复杂类型组合时可能引发意外行为（如联合类型的交叉运算）。
 
 ### 常见误区
+
 1. 认为"类型别名更强大所以优先使用"
 2. 在需要声明合并时错误使用类型别名
 3. 混淆接口继承与交叉类型的语义差异

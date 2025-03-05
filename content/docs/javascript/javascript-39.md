@@ -16,11 +16,13 @@ tags:
 ## 考察点分析
 
 此题主要考察以下能力维度：
+
 1. **ES6语法掌握程度**：对扩展运算符多场景应用的熟练程度
 2. **底层原理理解**：对迭代器协议和类数组转换机制的理解
 3. **API对比分析能力**：区分相似方法在不同场景下的适用性
 
 具体技术评估点：
+
 - 扩展运算符在数组/对象操作中的语法运用
 - 函数参数展开的替代方案演进（apply vs 扩展运算符）
 - 类数组转换时迭代器协议的核心作用
@@ -31,12 +33,15 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 1. 迭代器协议（Iterator Protocol）
 2. 类数组对象特征
 3. 对象字面量合并规则
 
 ### 原理剖析
+
 **扩展运算符**本质是通过调用对象的`Symbol.iterator`方法进行遍历操作。当处理类数组时：
+
 ```javascript
 const arr = [...arrayLike]; 
 // 等同于：
@@ -44,11 +49,13 @@ const arr = Array.from(arrayLike[Symbol.iterator]())
 ```
 
 **Array.from**通过以下步骤处理类数组：
+
 1. 检查是否为可迭代对象
 2. 不可迭代时，通过`length`属性创建索引访问结构
 3. 支持可选的映射函数参数
 
 ### 常见误区
+
 1. 误将非iterable类数组直接用于扩展运算符（如{length: 3}）
 2. 忽略对象合并时的浅拷贝特性
 3. 混淆字符串转换为数组时的Unicode处理
@@ -58,22 +65,27 @@ const arr = Array.from(arrayLike[Symbol.iterator]())
 ## 问题解答
 
 ### 扩展运算符应用场景
+
 1. **数组拼接**：
+
 ```javascript
 const merged = [a, ...arr1, ...arr2, b]; // 直观替代concat
 ```
 
 2. **函数传参**：
+
 ```javascript
 Math.max(...[1,5,3]); // 替代apply的数组展开方式
 ```
 
 3. **对象合并**：
+
 ```javascript
 const mergedObj = { ...defaults, ...options }; // 浅合并，后者覆盖前者
 ```
 
 ### 行为差异对比
+
 | 特性                | [...arr]         | Array.from()     |
 |---------------------|------------------|------------------|
 | 迭代器依赖          | 必须实现         | 可选支持         |
@@ -86,6 +98,7 @@ const mergedObj = { ...defaults, ...options }; // 浅合并，后者覆盖前者
 ## 解决方案
 
 ### 类数组转换示例
+
 ```javascript
 // 安全转换类数组
 function safeConvert(arrayLike) {
@@ -103,6 +116,7 @@ const hasIterator = (obj) => !!obj[Symbol.iterator];
 ```
 
 ### 扩展建议
+
 1. **大数据量**：优先使用`Array.from`避免迭代器性能损耗
 2. **兼容性处理**：构建时通过Babel转换保证旧浏览器支持
 3. **类型安全**：配合TypeScript类型断言确保操作安全

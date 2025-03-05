@@ -18,11 +18,13 @@ tags:
 ## 考察点分析
 
 本题主要考察以下核心能力维度：
+
 1. **响应式设计实现能力**：考察多条件媒体查询的组合使用及现代CSS特性的掌握程度
 2. **设备适配专业经验**：评估高精度显示设备适配方案的设计能力
 3. **CSS规范演进认知**：检测对CSS新标准的跟踪理解及实际应用能力
 
 具体技术评估点：
+
 - 多条件媒体查询的布尔逻辑组合
 - 像素密度检测的正确单位使用
 - 现代媒体特性对特殊显示设备的优化思路
@@ -34,11 +36,13 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 1. 复合媒体查询 > prefers-color-scheme > orientation
 2. resolution单位换算 > 设备像素比计算
 3. Media Query Level 4新特性 > 渲染性能优化
 
 ### 原理剖析
+
 **复合媒体查询**通过逻辑运算符组合检测条件，`and`表示逻辑与关系。检测深色模式时使用`prefers-color-scheme: dark`，屏幕方向通过`orientation`取值portrait/landscape判断。
 
 **分辨率适配**需注意`dppx`（dots per pixel）是现代标准单位，1dppx=96dpi。Retina屏幕典型值为2dppx，对应`min-resolution: 2dppx`。
@@ -46,6 +50,7 @@ tags:
 **update-frequency**特性检测设备刷新方式，`update: slow`表示类似电子墨水屏的低刷新率设备，此时应避免频繁的动画和阴影渲染，防止出现屏幕残影。
 
 ### 常见误区
+
 1. 使用逗号分隔条件导致逻辑错误（`,`相当于OR）
 2. 混淆`dpi`与`dppx`单位导致适配失效
 3. 遗漏现代浏览器对Media Query Level 4的兼容性处理
@@ -88,6 +93,7 @@ tags:
 ## 解决方案
 
 ### 编码示例
+
 ```css
 /* 复合条件检测 */
 @media (prefers-color-scheme: dark) and (orientation: landscape) and (min-resolution: 2dppx) {
@@ -108,6 +114,7 @@ tags:
 ```
 
 **优化建议**：
+
 - 使用`image-set()`配合resolution检测实现自适应资源加载
 - 对电子墨水屏设备禁用CSS过渡动画
 - 通过`@supports`检测特性支持实现渐进增强

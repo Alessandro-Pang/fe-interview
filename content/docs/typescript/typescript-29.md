@@ -17,11 +17,13 @@ tags:
 ## 考察点分析
 
 **核心能力维度**：
+
 - TypeScript 高级类型理解
 - 工具类型实现原理
 - 类型安全实践能力
 
 **技术评估点**：
+
 1. Omit 工具类型的实现机制
 2. keyof 与条件类型的组合运用
 3. 类型操作与运行时安全的协同
@@ -33,13 +35,16 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 1. **映射类型**（Mapped Types）
 2. **keyof 操作符**（Keyof Type Operator）
 3. **Exclude 工具类型**（Exclude Utility Type）
 4. **类型扩展与收缩**（Type Widening/Narrowing）
 
 ### 原理剖析
+
 Omit<T, K> 通过两个核心步骤实现：
+
 1. `Exclude<keyof T, K>`：获取类型 T 所有键中排除 K 后的剩余键集合
 2. `Pick<T, 剩余键集合>`：从原类型中挑选出这些剩余键构成新类型
 
@@ -50,6 +55,7 @@ type Omit<T, K extends keyof any> = {
 ```
 
 **常见误区**：
+
 - 误将 K 限制为 keyof T（正确应为 string | number | symbol 的联合）
 - 仅处理类型忽略实际数据清洗
 - 嵌套对象处理需要递归 Omit
@@ -80,6 +86,7 @@ function removeSensitiveFields(user: SensitiveUser): SafeUser {
 ## 解决方案
 
 ### 编码示例
+
 ```typescript
 // 安全用户类型
 type User = {
@@ -104,10 +111,12 @@ function sanitizeUser(user: User): Omit<User, 'password'> {
 ```
 
 **复杂度优化**：
+
 - 时间复杂度 O(1)（对象解构是线性操作）
 - 空间复杂度 O(n)（创建新对象）
 
 **扩展建议**：
+
 - 使用装饰器模式批量处理多个敏感字段
 - 集成到 API 中间件实现自动过滤
 - 使用类型守卫验证处理结果
@@ -117,6 +126,7 @@ function sanitizeUser(user: User): Omit<User, 'password'> {
 ## 深度追问
 
 ### 如何实现深度 Omit？
+
 通过递归映射类型处理嵌套对象：
 
 ```typescript
@@ -126,6 +136,7 @@ type DeepOmit<T, K> = T extends object ? {
 ```
 
 ### 如何防止未排除字段泄漏？
+
 在类型定义层使用 `never` 标记敏感字段，强制编译错误：
 
 ```typescript

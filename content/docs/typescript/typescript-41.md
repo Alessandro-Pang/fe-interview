@@ -23,12 +23,14 @@ tags:
 ### 考察点分析
 
 本题主要考察以下技术维度：
+
 1. **类型收窄能力**：在联合类型场景下如何安全地进行类型判断
 2. **TypeScript高级类型**：自定义类型守卫与类型谓词的应用
 3. **类型操作符**：in操作符的运行时检查与类型推断协同
 4. **接口设计能力**：通过属性鉴别器设计可区分的联合类型
 
 具体评估点：
+
 - 自定义类型守卫的语法结构（返回值类型谓词）
 - in操作符在类型检查中的实际应用
 �4〰
@@ -41,9 +43,11 @@ tags:
 ### 技术解析
 
 #### 核心知识点优先级
+
 1. 类型谓词 > 2. 属性检查 > 3. 控制流分析
 
 #### 原理机制
+
 ```typescript
 // 类型谓词函数结构
 function isType(value: any): value is TargetType {
@@ -54,11 +58,13 @@ function isType(value: any): value is TargetType {
 类型守卫通过返回`参数 is 类型`的布尔值，告知编译器在条件分支内的参数类型。当使用`in`操作符进行属性检查时，TypeScript会自动收窄类型（Control Flow Analysis），该机制与类型谓词协同工作形成双重验证。
 
 **执行流程**：
+
 1. 运行时检查属性存在性（in操作符）
 2. 编译器验证类型谓词声明
 3. 触发控制流分析更新变量类型
 
 #### 常见误区
+
 - 混淆类型断言（as）与类型守卫的作用域
 - 错误返回非布尔值的类型谓词
 - 忽略null检查导致类型收窄失效
@@ -75,6 +81,7 @@ function isType(value: any): value is TargetType {
 3. **类型收窄应用**：在条件分支中使用守卫函数或直接属性检查
 
 **代码实现**：
+
 ```typescript
 interface Cat {
   meow: () => void;
@@ -113,6 +120,7 @@ function handlePet(pet: Cat | Dog) {
 ### 解决方案
 
 #### 编码最佳实践
+
 ```typescript
 // 优化后的类型守卫（包含null检查）
 function isCat(pet: Cat | Dog): pet is Cat {
@@ -136,6 +144,7 @@ function isRabbit(pet: Cat | Dog | Rabbit): pet is Rabbit {
 ```
 
 **优化说明**：
+
 1. 安全校验：增加null检查和类型验证
 2. 扩展策略：通过组合属性检查支持新类型
 3. 复杂度控制：O(1)时间复杂度判断属性存在性

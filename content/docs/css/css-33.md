@@ -16,7 +16,9 @@ tags:
 ---
 
 ## 考察点分析
+
 **核心能力维度**：CSS动画原理/现代浏览器API运用/性能优化意识  
+
 1. **滚动驱动动画规范**：对Scroll-driven Animations提案的理解深度  
 2. **CSS与JS方案对比**：浏览器渲染机制差异（主线程 vs 合成器线程）  
 3. **API运用能力**：animation-timeline与view()的实战配置  
@@ -26,10 +28,13 @@ tags:
 ---
 
 ## 技术解析
+
 ### 关键知识点
+
 Scroll-driven Animations > animation-timeline > view() > scroll() > JavaScript滚动监听
 
 ### 原理剖析
+
 1. **animation-timeline**：  
    将动画时间轴绑定到滚动进度而非默认时间轴，支持两种类型：  
    - `scroll()`：绑定到滚动容器的滚动进度  
@@ -41,11 +46,13 @@ Scroll-driven Animations > animation-timeline > view() > scroll() > JavaScript�
    - 示例：`view(block 25% 75%)`表示元素在块轴向进入25%-75%视口范围时触发  
 
 3. **执行流程**：  
+
    ```
    滚动事件 → 浏览器计算滚动偏移量 → 更新相关CSS Timeline → 触发动画合成器更新 → GPU渲染
    ```
 
 ### 常见误区
+
 1. 混淆`view()`的起始点定义与Intersection Observer的thresholds  
 2. 未考虑浏览器兼容性导致降级方案缺失  
 3. 过度依赖JS轮询造成主线程卡顿  
@@ -53,12 +60,15 @@ Scroll-driven Animations > animation-timeline > view() > scroll() > JavaScript�
 ---
 
 ## 问题解答
+
 **核心API说明**：  
 Scroll-driven Animations通过`animation-timeline`属性关联滚动时间轴，其中：
+
 - `scroll()`绑定滚动容器进度，需配合`scroll-timeline`定义滚动轴
 - `view()`基于元素与视口的交叉状态驱动动画
 
 **视口进入动画示例**：  
+
 ```css
 @keyframes slide-in {
   from { transform: translateX(-100%); }
@@ -72,6 +82,7 @@ Scroll-driven Animations通过`animation-timeline`属性关联滚动时间轴，
 ```
 
 **滚动进度条动画**：  
+
 ```css
 .container {
   scroll-timeline: --pageScroll block;
@@ -89,6 +100,7 @@ Scroll-driven Animations通过`animation-timeline`属性关联滚动时间轴，
 ```
 
 **技术优势对比**：  
+
 1. **性能优化**：通过CSSOM API直接与合成器通信，跳过主线程重计算  
 2. **帧同步精准**：自动与浏览器刷新率对齐，避免JS监听导致的丢帧  
 3. **内存效率**：无需维护滚动事件监听器，减少内存占用  
@@ -97,7 +109,9 @@ Scroll-driven Animations通过`animation-timeline`属性关联滚动时间轴，
 ---
 
 ## 解决方案
+
 ### 编码示例（视口追踪动画）
+
 ```html
 <style>
   .observer-box {
@@ -114,23 +128,29 @@ Scroll-driven Animations通过`animation-timeline`属性关联滚动时间轴，
   }
 </style>
 ```
+
 **优化说明**：  
+
 - 使用`view()`默认参数实现元素进入视口时播放动画  
 - 动画时长由滚动速度自动计算，避免手动计算进度  
 
 ### 可扩展性建议
+
 1. **降级方案**：  
+
 ```css
 @supports not (animation-timeline: view()) {
   /* 使用Intersection Observer+transform回退 */
 }
 ```
+
 2. **批量控制**：通过CSS自定义属性集中管理动画参数  
 3. **性能临界值**：对低端设备启用`will-change: transform`提前分配GPU资源  
 
 ---
 
 ## 深度追问
+
 1. **如何检测浏览器是否支持该规范？**  
    → 使用CSS.supports()检测`animation-timeline`特性  
 

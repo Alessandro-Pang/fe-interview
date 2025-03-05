@@ -18,11 +18,13 @@ tags:
 ### 一、考察点分析
 
 **核心能力维度**：  
+
 1. **JS核心对象理解**：对`arguments`底层结构的认知  
 2. **数据结构转换能力**：类数组对象与标准数组的转换技巧  
 3. **现代化编码规范**：ES6+新特性的合理运用  
 
 **技术评估点**：  
+
 - 类数组对象的核心特征（索引访问与length属性）  
 - 遍历方法的原型链调用原理（如`Array.prototype`方法借用）  
 - rest参数与`arguments`的替代关系  
@@ -36,11 +38,13 @@ tags:
 
 **原理剖析**：  
 `arguments`对象在函数执行时自动创建，具备与数组类似的特征：  
+
 1. 通过数字索引访问元素（`arguments[0]`）  
 2. 拥有`length`属性表示参数个数  
 3. **缺失数组原型方法**（如`forEach`），无法直接调用数组API  
 
 类数组转换为真实数组的三种典型方式：  
+
 ```javascript
 // 方式1：Array.from（ES6推荐）
 const arr1 = Array.from(arguments)
@@ -53,6 +57,7 @@ const arr3 = Array.prototype.slice.call(arguments)
 ```
 
 **常见误区**：  
+
 - 在箭头函数中尝试使用`arguments`（此时指向外层函数的作用域）  
 - 直接调用`arguments.map()`导致TypeError  
 - 未处理`arguments`的`iterator`特性（现代JS可用`for...of`直接遍历）  
@@ -62,6 +67,7 @@ const arr3 = Array.prototype.slice.call(arguments)
 ### 三、问题解答
 
 **答案要点**：  
+
 1. **类数组特征**：具有数字索引和length属性，但缺乏数组原型方法  
 2. **遍历方式**：  
    - 传统`for`循环：`for(let i=0; i<arguments.length; i++)`  
@@ -74,6 +80,7 @@ const arr3 = Array.prototype.slice.call(arguments)
 ### 四、解决方案
 
 **编码示例**：  
+
 ```javascript
 // 现代最佳实践：使用rest参数
 function logParams(...args) {
@@ -97,6 +104,7 @@ function legacyFunction(a, b) {
 ```
 
 **优化建议**：  
+
 - **性能敏感场景**：直接使用`for`循环避免数组转换开销（时间复杂度O(n)）  
 - **低版本兼容**：使用`Array.prototype.slice`进行polyfill  
 

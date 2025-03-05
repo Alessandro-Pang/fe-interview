@@ -42,11 +42,14 @@ tags: ["typescript", "基础类型", "类型注解", "类型安全"]
 ## 三、类型注解定义方式
 
 ### 1. 变量声明
+
 ```typescript
 let count: number = 10;
 const message: string = "Hello, TypeScript!";
 ```
+
 ### 2. 函数参数与返回值
+
 ```typescript
 // 函数返回值类型注解
 function sum(a: number, b: number): number {
@@ -58,8 +61,11 @@ const greet = (name: string): void => {
   console.log(`Hi, ${name}!`);
 };
 ```
+
 ### 3.复杂类型组合
+
 使用联合类型（|）、类型别名或接口：
+
 ```typescript
 // 联合类型
 let id: string | number = "ID-123";
@@ -72,8 +78,11 @@ type User = {
 };
 const user: User = { name: "Bob" };
 ```
+
 ### 4. 类型断言
+
 强制明确值的类型：
+
 ```typescript
 const input: unknown = "123";
 const num: number = parseInt(input as string);  // 断言为 string 类型
@@ -81,6 +90,7 @@ const num: number = parseInt(input as string);  // 断言为 string 类型
 // 或使用尖括号语法（不推荐在JSX中使用）
 const anotherNum: number = <number>input;
 ```
+
 ## 四、最佳实践
 
 避免使用 any：尽量用更精确的类型（如 unknown）或联合类型替代。

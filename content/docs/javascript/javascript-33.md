@@ -16,11 +16,13 @@ tags:
 ## 考察点分析
 
 该题目考察候选人对字符串处理方法的掌握程度及代码规范意识，主要评估：
+
 1. **API差异辨析能力**：准确区分易混淆的字符串方法参数定义与行为差异
 2. **边界条件处理**：负数参数、反向索引、超长参数等特殊场景的处理逻辑
 3. **标准规范认知**：理解ECMAScript标准演进及现代开发最佳实践
 
 核心评估点：
+
 - 参数定义差异（startIndex vs length）
 - 负数参数处理逻辑
 - 方法弃用背景与替代方案
@@ -28,6 +30,7 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 1. **参数定义**：
    - `substring(startIndex, endIndex)`：提取字符到结束索引前（左闭右开）
    - `substr(startIndex, length)`：从起始索引提取指定长度字符
@@ -41,6 +44,7 @@ tags:
    - MDN标注为遗留方法（Legacy feature）
 
 ### 原理剖析
+
 ```javascript
 // 示例字符串
 const str = "HelloWorld";
@@ -57,6 +61,7 @@ str.substr(-5,3) => 从索引5开始取3字符 => "rld"
 ```
 
 ### 常见误区
+
 - 混淆参数类型（将substr第二个参数误认为结束索引）
 - 误判负数处理逻辑（特别是substr的start负索引）
 - 忽视标准化差异（误以为substr是现代标准方法）
@@ -64,6 +69,7 @@ str.substr(-5,3) => 从索引5开始取3字符 => "rld"
 ## 问题解答
 
 `substring`与`substr`核心差异体现在参数定义与负数处理：
+
 1. **参数语义**：
    - `substring(start, end)`：提取[start, end)区间字符
    - `substr(start, length)`：从start开始提取length个字符
@@ -73,6 +79,7 @@ str.substr(-5,3) => 从索引5开始取3字符 => "rld"
    - `substr`的start负数为倒数，length负数返回空
 
 MDN建议避免使用`substr`的原因：
+
 - 非ECMAScript核心标准方法
 - 存在跨浏览器兼容问题（如旧版IE的负数参数处理差异）
 - 现代标准推荐使用`substring`或`slice`（符合直觉的负数处理）
@@ -80,6 +87,7 @@ MDN建议避免使用`substr`的原因：
 ## 解决方案
 
 ### 编码示例
+
 ```javascript
 // 安全截取最后N位字符
 function getLastNChars(str, n) {
@@ -93,6 +101,7 @@ console.log(getLastNChars("Hi", 5)); // "Hi"（自动截断）
 ```
 
 ### 可扩展性建议
+
 - 大流量场景优先使用`slice`（性能与`substring`相当）
 - 低端设备避免链式操作（如`str.slice().trim()`分开处理）
 

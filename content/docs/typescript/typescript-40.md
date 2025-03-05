@@ -18,12 +18,14 @@ tags:
 ## 考察点分析
 
 本题主要考察候选人在以下维度的能力：
+
 1. **TypeScript生态理解**：第三方类型包(@types)的管理机制与模块解析策略
 2. **工程化配置能力**：tsconfig.json中关键配置项(typeRoots/types)的实战应用
 3. **类型扩展技巧**：全局类型声明与模块扩展的实现方式
 4. **项目规范意识**：类型声明文件的组织结构与维护策略
 
 具体技术评估点：
+
 - @types包的安装机制与类型查找优先级
 - 全局声明文件与模块扩展的编写规范
 - typeRoots与types配置项的差异及使用场景
@@ -34,9 +36,11 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 TypeScript类型查找策略 > typeRoots配置 > 模块声明合并 > 全局类型作用域
 
 ### 原理剖析
+
 1. **类型解析流程**：
    - 从导入语句开始，按照Node.js模块解析策略查找`.d.ts`
    - 检查`@types`目录（当`typeRoots`未指定时默认包含）
@@ -44,6 +48,7 @@ TypeScript类型查找策略 > typeRoots配置 > 模块声明合并 > 全局类�
    - 解析`tsconfig.json`中`paths`配置的路径映射
 
 2. **typeRoots工作机制**：
+
    ```json
    {
      "compilerOptions": {
@@ -54,10 +59,12 @@ TypeScript类型查找策略 > typeRoots配置 > 模块声明合并 > 全局类�
      }
    }
    ```
+
    - 指定后只会扫描声明目录下的包结构（每个子目录视为一个包）
    - 必须手动包含`node_modules/@types`否则丢失第三方类型
 
 3. **声明文件分类策略**：
+
    ```bash
    types/
    ├── global # 全局类型声明
@@ -69,6 +76,7 @@ TypeScript类型查找策略 > typeRoots配置 > 模块声明合并 > 全局类�
    ```
 
 ### 常见误区
+
 - 误认为`typeRoots`会自动包含子目录（实际需要显式声明）
 - 全局声明文件中使用`export`导致作用域失效
 - 模块扩展声明未使用完整原始模块路径导致合并失败
@@ -84,6 +92,7 @@ TypeScript类型查找策略 > typeRoots配置 > 模块声明合并 > 全局类�
    - 自定义类型补充时，创建`libs`目录并配置`typeRoots`包含该路径
 
 2. **全局类型声明**
+
    ```typescript
    // types/global/index.d.ts
    declare interface Window {
@@ -92,9 +101,11 @@ TypeScript类型查找策略 > typeRoots配置 > 模块声明合并 > 全局类�
    
    declare type UUID = string;
    ```
+
    配置`typeRoots`包含该目录，确保无`export`语句
 
 3. **模块扩展**
+
    ```typescript
    // types/modules/axios.d.ts
    declare module 'axios' {
@@ -103,9 +114,11 @@ TypeScript类型查找策略 > typeRoots配置 > 模块声明合并 > 全局类�
      }
    }
    ```
+
    通过模块声明合并机制扩展第三方库类型
 
 4. **TSConfig配置**
+
    ```json
    {
      "compilerOptions": {
@@ -117,6 +130,7 @@ TypeScript类型查找策略 > typeRoots配置 > 模块声明合并 > 全局类�
      }
    }
    ```
+
    显式声明类型查找路径，优先级从左到右逐级下降
 
 ---
@@ -124,6 +138,7 @@ TypeScript类型查找策略 > typeRoots配置 > 模块声明合并 > 全局类�
 ## 解决方案
 
 ### 配置示例
+
 ```typescript
 // tsconfig.json
 {
@@ -141,6 +156,7 @@ TypeScript类型查找策略 > typeRoots配置 > 模块声明合并 > 全局类�
 ```
 
 ### 扩展性优化
+
 1. **性能优化**：拆分声明文件到不同子目录，避免单文件过大
 2. **环境隔离**：通过`/// <reference types="webpack/env" />`实现环境特定类型
 3. **版本控制**：对自定义类型目录实施版本锁（package.json中指定类型版本）

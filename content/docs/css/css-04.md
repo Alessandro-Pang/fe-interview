@@ -17,6 +17,7 @@ tags:
 ## 考察点分析
 
 本题主要考察候选人对CSS隐藏技术方案的原理理解及场景应用能力，核心评估维度包括：
+
 1. **渲染机制理解**：各属性对文档流（重排/重绘）的影响
 2. **事件系统认知**：不可见元素的事件响应机制
 3. **动画原理掌握**：CSS属性是否支持过渡动画
@@ -25,11 +26,13 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 1. **文档流占用**：display:none > visibility > opacity ≈ clip-path
 2. **事件响应**：opacity > clip-path > visibility > display
 3. **过渡动画**：opacity ≈ clip-path > visibility > display
 
 ### 原理剖析
+
 1. **display:none**：
    - 触发重排，完全移出文档流
    - 无法响应任何事件（DOM树移除）
@@ -51,6 +54,7 @@ tags:
    - 支持路径动画实现创意效果
 
 ### 常见误区
+
 - 认为opacity:0元素自动不响应事件（默认仍可触发）
 - 混淆visibility与display的布局影响（重排vs重绘）
 - 误判clip-path的点击区域（按实际渲染区域判断）
@@ -69,6 +73,7 @@ tags:
 | clip-path:inset(100%)| 占用       | 裁剪区不响应       | 支持路径动画       |
 
 **适用场景**：
+
 - `display:none`：组件完全销毁（如SPA页面切换）
 - `visibility:hidden`：保留布局的隐藏（如占位预加载）
 - `opacity:0`：带交互的淡入淡出（如提示框）
@@ -82,7 +87,7 @@ tags:
    - 使用`visibility:hidden`或预先克隆节点
 
 2. **transition如何与visibility配合实现淡出？**
-   - 设置`transition: visibility 0s linear 0.3s`延迟生效 
+   - 设置`transition: visibility 0s linear 0.3s`延迟生效
 
 3. **clip-path动画性能瓶颈在哪？**
    - 复杂路径计算可能引发主线程负载 ，建议配合will-change优化
