@@ -7,7 +7,7 @@
                     <span class="icon-color d-flex my-3">
                         {{ if strings.HasSuffix .Params.icon ".svg" }}
                             {{ with resources.Get .Params.icon }}
-                                <i class="material-icons" style="width: 24px; height: 24px; fill: #3056d5;">
+                                <i class="material-icons" style="width: 24px; height: 24px; fill: var(--feature-icon-color);">
                                     {{ .Content | safeHTML }}
                                 </i>
                             {{ end }}

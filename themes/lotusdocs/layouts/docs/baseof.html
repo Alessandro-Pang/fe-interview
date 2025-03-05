@@ -49,7 +49,7 @@
                                                     {{ with .Params.icon }}
                                                         {{ if strings.HasSuffix . ".svg" }}
                                                             {{ with resources.Get . }}
-                                                                <i class="material-icons title-icon me-2 p-2" style="fill: #3056d5;">
+                                                                <i class="material-icons title-icon me-2 p-2" style="fill: var(--feature-icon-color);">
                                                                     {{ .Content | safeHTML }}
                                                                 </i>
                                                             {{ end }}
