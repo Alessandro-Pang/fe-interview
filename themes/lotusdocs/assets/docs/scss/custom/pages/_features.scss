@@ -224,4 +224,9 @@
         align-items: center;
         justify-content: center;
     }
+
+    svg.icon {
+        min-width: auto;
+        margin-left: 0 !important;
+    }
 }

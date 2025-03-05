@@ -4,7 +4,7 @@ date: "2025-03-04T05:09:42.809Z"
 draft: false
 author: "zi.Yang"
 title: "composition api 与 options api 的区别"
-icon: "javascript"
+icon: "/icon/vue.svg"
 toc: true
 description: "Vue3.0 所采用的 Composition Api 与 Vue2.x 使用的 Options Api 有什么不同？"
 tags: ["vue3"]

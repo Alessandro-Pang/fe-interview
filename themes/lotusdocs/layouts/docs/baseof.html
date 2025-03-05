@@ -48,9 +48,11 @@
                                                 {{ if site.Params.docs.titleIcon | default false }}
                                                     {{ with .Params.icon }}
                                                         {{ if strings.HasSuffix . ".svg" }}
-                                                            <i class="material-icons title-icon me-2 p-2">
-                                                                <img width="100%" src="{{ site.BaseURL }}{{ . }}" alt="title-icon" />
-                                                            </i>
+                                                            {{ with resources.Get . }}
+                                                                <i class="material-icons title-icon me-2 p-2" style="fill: #3056d5;">
+                                                                    {{ .Content | safeHTML }}
+                                                                </i>
+                                                            {{ end }}
                                                         {{ else }} 
                                                             <i class="material-icons title-icon me-2">{{- . | default "article" }}</i>
                                                         {{ end }}
