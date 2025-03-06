@@ -2,7 +2,7 @@
  * @Author: zi.yang
  * @Date: 2025-03-03 11:32:10
  * @LastEditors: zi.yang
- * @LastEditTime: 2025-03-04 20:01:06
+ * @LastEditTime: 2025-03-06 11:32:39
  * @Description:
  * @FilePath: /fe-interview/README.md
 -->
@@ -132,7 +132,7 @@ content/
 
 ## 📄 许可证
 
-MIT License © 2024 [Alessandro-Pang](https://github.com/Alessandro-Pang)
+MIT License © 2025 [Alessandro-Pang](https://github.com/Alessandro-Pang)
 
 ---
 
