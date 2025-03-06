@@ -2,7 +2,7 @@
  * @Author: zi.yang
  * @Date: 2025-03-03 11:32:10
  * @LastEditors: zi.yang
- * @LastEditTime: 2025-03-06 20:48:48
+ * @LastEditTime: 2025-03-06 20:53:59
  * @Description:
  * @FilePath: /fe-interview/README.md
 -->
@@ -45,9 +45,9 @@
 
 ### 本地运行
 
->[!warning] 
+>[!warning]
 >
->  注意：需要提前安装 Go 语言环境, go 使用 1.20 版本
+> 注意：需要提前安装 Go 语言环境, go 使用 1.20 版本
 
 #### 克隆项目
 
