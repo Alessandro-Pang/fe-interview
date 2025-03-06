@@ -1,5 +1,5 @@
 ---
-weight: 2000
+weight: 10000000
 title: "Vite"
 description: "vite是一个现代化的前端构建工具，它使用Rollup作为打包器。Vite提供了一个开发服务器，支持热模块替换（HMR），并且可以快速启动和重新加载你的项目。这使得开发者可以更快地看到他们的更改，并提高开发效率。"
 icon: "icon/vite.svg"
