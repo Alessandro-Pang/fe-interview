@@ -2,7 +2,7 @@
  * @Author: zi.yang
  * @Date: 2025-03-03 11:32:10
  * @LastEditors: zi.yang
- * @LastEditTime: 2025-03-06 11:32:39
+ * @LastEditTime: 2025-03-06 12:08:45
  * @Description:
  * @FilePath: /fe-interview/README.md
 -->
@@ -45,14 +45,34 @@
 
 ### 本地运行
 
+> [!note] 注意：
+> 需要提前安装 Go 语言环境, go 使用 1.20 版本
+
+#### 克隆项目
+
 ```bash
-# 克隆项目
 git clone https://github.com/Alessandro-Pang/fe-interview.git
+```
 
-# 安装依赖
-brew install hugo
+#### 安装依赖
 
-# 启动开发服务器
+hugo 官方安装文档： [https://gohugo.io/installation/](https://gohugo.io/installation/)
+
+- MacOS/Linux: 推荐使用 Homebrew 安装 Hugo
+  
+  ```bash
+  brew install hugo
+  ```
+  
+- Windows: 推荐使用 Scoop/Chocolatey/Winget 安装 Hugo
+
+  ```bash
+  scoop install hugo-extended
+  ```
+
+#### 启动开发服务器
+
+```bash
 hugo server -D
 ```
 
