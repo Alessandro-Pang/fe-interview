@@ -1,5 +1,5 @@
 ---
-weight: 1800
+weight: 1008000
 date: '2025-03-04T06:58:29.123Z'
 draft: false
 author: zi.Yang
@@ -18,11 +18,13 @@ tags:
 ## 考察点分析
 
 该题目主要考察以下核心能力维度：
+
 1. **响应式图像原理**：对HTML5标准中现代图像适配方案的理解深度
 2. **性能优化意识**：根据使用场景选择最佳资源加载策略的能力
 3. **设备适配策略**：区分内容适配与显示质量适配的应用场景差异
 
 具体技术评估点包括：
+
 - srcset属性中w/x描述符的语义差异
 - sizes属性与视口计算逻辑的关系
 - 浏览器选择图片资源的决策算法
@@ -34,16 +36,20 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 1. srcset语法规则 > sizes媒体查询 > 浏览器选择算法
 2. picture元素结构 > 媒体查询 > MIME类型支持
 
 ### 原理剖析
+
 **srcset+sizes工作流程**：
+
 1. 开发者提供带宽度描述符的候选图（如`image-800w.jpg 800w`）
 2. 通过sizes属性声明视口条件（如`(max-width:600px) 100vw, 50vw`）
 3. 浏览器根据设备DPR（Device Pixel Ratio）、视口尺寸、网络条件，选择最接近`屏幕CSS像素宽度×DPR`的图源
 
 **picture元素的工作机制**：
+
 ```html
 <picture>
   <source media="(max-width:800px)" srcset="mobile.jpg">
@@ -51,9 +57,11 @@ tags:
   <img src="fallback.jpg">
 </picture>
 ```
+
 浏览器按source顺序检测媒体查询，加载首个匹配的srcset，img标签作为兜底方案
 
 ### 常见误区
+
 1. 混淆x描述符（固定DPR设备）和w描述符（动态计算）
 2. 误认为sizes的媒体查询与图片实际显示尺寸无关
 3. 在picture元素中使用反向媒体查询顺序（应从最小屏条件开始检测）
@@ -66,6 +74,7 @@ tags:
 通过w描述符定义图源物理宽度，配合sizes定义的视口CSS像素宽度，浏览器自动计算所需物理像素（CSS宽度 × DPR），选择≥该值的最小图源。例如sizes="(max-width:600px) 100vw"时，600px视口+DPR=2的设备将选择≥1200px物理宽度的图源。
 
 **方案对比**：
+
 | 维度        | 分辨率切换          | Art Direction         |
 |----------------|---------------------|-----------------------|
 | 核心目标      | 保清晰度            | 保内容完整性          |
@@ -78,6 +87,7 @@ tags:
 ## 解决方案
 
 ### 编码示例
+
 ```html
 <!-- 分辨率切换方案 -->
 <img src="default.jpg"
@@ -97,12 +107,15 @@ tags:
   <img src="default.jpg" alt="art directed image">
 </picture>
 ```
+
 关键注释：
+
 1. `w`单位需配合sizes使用，否则无效
 2. picture中media检测顺序影响匹配优先级
 3. 1.5x表示当DPR≥1.5时使用该图源
 
 ### 可扩展性建议
+
 1. 结合`<source>`的type属性实现WebP格式渐进增强
 2. 通过Intersection Observer实现懒加载
 3. 服务端根据User-Agent头返回不同尺寸图源

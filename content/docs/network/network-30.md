@@ -1,5 +1,5 @@
 ---
-weight: 4000
+weight: 11030000
 date: '2025-03-04T09:31:00.147Z'
 draft: false
 author: zi.Yang
@@ -18,11 +18,13 @@ tags:
 ## 考察点分析
 
 **核心能力维度**：  
+
 1. **WebAssembly底层原理理解**：掌握Wasm的模块结构、内存模型及执行机制  
 2. **性能优化判断力**：识别Wasm在计算密集型场景的性能优势边界  
 3. **跨语言互操作能力**：理解JS与Wasm的交互模式及数据传递机制  
 
 **技术评估点**：  
+
 - 线性内存（Linear Memory）与TypedArray的交互原理  
 - 静态类型系统带来的编译优化优势  
 - SIMD指令在多媒体处理中的应用  
@@ -37,11 +39,13 @@ tags:
 内存管理 > SIMD指令 > 线程模型 > 类型系统 > JS互操作  
 
 **原理剖析**：  
+
 1. **内存模型**：Wasm使用连续字节数组的线性内存，与JS通过ArrayBuffer交互。例如处理1024x1024图像时，Rust可直接操作内存地址，而JS需要通过Canvas的ImageData接口进行多层抽象  
 2. **类型系统**：Rust/C++的静态类型允许编译器进行SSE/AVX指令级优化，而JS的动态类型需在JIT阶段推断类型  
 3. **并行计算**：通过SharedArrayBuffer实现多线程内存共享，C++线程池编译为Wasm后，配合Web Workers可实现物理仿真中的并行碰撞检测  
 
 **常见误区**：  
+
 - 盲目使用Wasm处理DOM操作（实际性能可能低于JS）  
 - 忽略内存拷贝开销（直接操作内存指针 vs 频繁数据传递）  
 - 错误估计SIMD加速比（需硬件支持和算法适配）  
@@ -51,6 +55,7 @@ tags:
 ## 问题解答
 
 **WebAssembly在图像处理中的优势**：  
+
 ```rust
 // Rust端：灰度处理核心算法
 #[wasm_bindgen]
@@ -65,6 +70,7 @@ pub fn grayscale(ptr: *mut u8, len: usize) {
 ```
 
 **JS互操作示例**：  
+
 ```javascript
 // 通过WebAssembly内存直接操作ImageData
 const canvas = document.getElementById('canvas');
@@ -83,6 +89,7 @@ ctx.putImageData(imageData, 0, 0);
 ```
 
 **性能优势对比**：  
+
 - 图像处理：WebAssembly处理4K图像比JS快3-5倍（实测数据）  
 - 物理仿真：使用Box2D的Wasm版本比JS实现提升10倍计算速度  
 
@@ -91,11 +98,13 @@ ctx.putImageData(imageData, 0, 0);
 ## 解决方案
 
 **编码优化策略**：  
+
 1. 内存复用：在Rust侧预分配内存池，避免频繁的JS-Wasm内存拷贝  
 2. SIMD并行化：使用`std::simd`进行像素级并行计算  
 3. 批处理优化：将物理仿真中的碰撞检测分批进行，匹配CPU缓存行  
 
 **可扩展性建议**：  
+
 - 大流量场景：通过WebSocket分块传输计算任务到Worker集群  
 - 低端设备：动态降级算法复杂度（如：减少物理迭代次数）  
 

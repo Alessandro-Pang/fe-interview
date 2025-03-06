@@ -1,10 +1,10 @@
 ---
-weight: 90002
+weight: 5090002
 date: "2025-03-04T05:09:42.809Z"
 draft: false
 author: "zi.Yang"
 title: "vue3 的设计目标是什么？做了哪些优化？"
-icon: "javascript"
+icon: "/icon/vue.svg"
 toc: true
 description: "Vue3.0的设计目标是什么？做了哪些优化"
 tags: ["vue3"]

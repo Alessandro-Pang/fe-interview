@@ -1,5 +1,5 @@
 ---
-weight: 2100
+weight: 2011000
 date: '2025-03-04T06:58:34.329Z'
 draft: false
 author: zi.Yang
@@ -17,11 +17,13 @@ tags:
 ## 考察点分析
 
 本题主要考察候选人对CSS核心机制的掌握程度，涉及以下维度：
+
 1. **样式继承机制**：理解`line-height`不同值类型的计算与继承差异
 2. **格式化上下文**：掌握BFC触发条件及解决布局问题的原理
 3. **字体适配能力**：设计跨平台的系统字体降级方案
 
 **技术评估点**：
+
 - 百分比与无单位值在继承时的计算差异
 - BFC的9种形成条件及margin折叠的解决原理
 - `font-family`字体栈的优先级配置技巧
@@ -31,11 +33,13 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 1. **line-height继承机制**  
    - 百分比值：基于当前元素的`font-size`计算，子元素继承计算后的绝对值  
    - 无单位值：作为缩放因子继承，子元素按自身`font-size`重新计算  
 
 2. **BFC形成条件**  
+
    ```markdown
    浮动元素（float非none）
    绝对定位元素（position: absolute/fixed）
@@ -53,11 +57,13 @@ tags:
 ## 问题解答
 
 **1. line-height继承差异**  
+
 - 百分比值：父元素`line-height: 150%`时，计算值为`父font-size * 1.5`，子元素继承该固定值  
 - 无单位值：父元素`line-height: 1.5`时，子元素继承该比例，最终值为`子font-size * 1.5`
 
 **2. BFC解决margin重叠**  
 BFC容器内的元素与其外部元素分属不同渲染上下文，阻止垂直margin合并。示例：  
+
 ```html
 <div style="overflow: hidden"> <!-- 触发BFC -->
   <p style="margin: 20px">...</p>
@@ -65,6 +71,7 @@ BFC容器内的元素与其外部元素分属不同渲染上下文，阻止垂�
 ```
 
 **3. 系统字体降级**  
+
 ```css
 body {
   font-family: 
@@ -81,6 +88,7 @@ body {
 ## 解决方案
 
 ### 字体降级代码优化
+
 ```css
 .font-stack {
   font-family:
@@ -91,7 +99,9 @@ body {
     sans-serif; /* 最终回退 */
 }
 ```
+
 **优化点**：  
+
 1. 新增`system-ui`通用标识符  
 2. 处理Windows 11的渲染差异  
 3. 所有字体名保持小写提高解析效率  

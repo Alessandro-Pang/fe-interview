@@ -1,5 +1,5 @@
 ---
-weight: 2500
+weight: 3015000
 date: '2025-03-04T06:58:24.482Z'
 draft: false
 author: zi.Yang
@@ -16,11 +16,13 @@ tags:
 ## 考察点分析
 
 本题主要考察以下核心能力维度：
+
 1. **原型链机制理解**：能否清晰描述`instanceof`操作符基于原型链进行类型检测的实现原理
 2. **跨执行环境问题诊断**：是否了解浏览器多窗口环境对原型链检测的影响
 3. **替代方案掌握**：能否给出可靠的类型检测方案及其原理依据
 
 具体技术评估点包括：
+
 - `instanceof`的递归原型查找机制
 - 浏览器多窗口（iframe）环境中的构造函数隔离问题
 - `Object.prototype.toString`的跨环境兼容性原理
@@ -31,12 +33,15 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 1. 原型链查找机制
 2. 执行环境隔离
 3. 类型检测替代方案
 
 ### 原理剖析
+
 **`instanceof`工作原理**：
+
 1. 检查右侧构造函数是否存在`Symbol.hasInstance`方法，若有则调用该方法
 2. 若无，则遍历左侧对象的原型链（通过`__proto__`），
    直到找到与构造函数的`prototype`相等的原型对象
@@ -54,15 +59,18 @@ function customInstanceof(obj, constructor) {
 ```
 
 **跨窗口问题**：
+
 - 不同窗口的全局构造函数独立（如`iframeContentWindow.Array !== parentWindow.Array`）
 - 导致跨窗口对象无法通过`instanceof`检测父窗口构造函数
 
 **可靠检测方案**：
+
 1. `Object.prototype.toString.call(obj)`：依赖对象内部`[[Class]]`标记
 2. `Array.isArray()`：通过`@@species`标识检测
 3. `obj?.constructor === Type`：需确保构造函数来源一致性
 
 ### 常见误区
+
 - 认为修改`constructor.prototype`会影响已创建实例的`instanceof`结果
 - 误将跨窗口对象的`constructor`与当前环境构造函数直接比较
 - 忽略`Symbol.hasInstance`自定义检测逻辑的影响
@@ -74,6 +82,7 @@ function customInstanceof(obj, constructor) {
 `instanceof`通过递归查找对象原型链，判断是否存在与构造函数`prototype`相等的原型。在跨窗口环境中，由于不同窗口的全局构造函数相互独立，导致检测失效。可靠解决方案包括：
 
 1. **使用`Object.prototype.toString`**：
+
 ```javascript
 function typeCheck(obj) {
   return Object.prototype.toString.call(obj).slice(8, -1);
@@ -82,12 +91,14 @@ function typeCheck(obj) {
 ```
 
 2. **内置静态方法**：
+
 ```javascript
 // 适用于数组类型
 console.log(Array.isArray(crossFrameArray)); // 跨窗口仍然有效
 ```
 
 3. **统一构造函数引用**：
+
 ```javascript
 // 通过窗口引用保持构造函数一致
 const iframeArray = iframe.contentWindow.Array;
@@ -99,6 +110,7 @@ console.log(crossFrameObj instanceof iframeArray);
 ## 解决方案
 
 ### 编码示例
+
 ```javascript
 // 通用类型检测（支持跨窗口）
 function safeTypeOf(obj) {
@@ -128,6 +140,7 @@ console.log(safeTypeOf(new Date())); // "date"
 ```
 
 ### 可扩展性建议
+
 - **性能敏感场景**：优先使用原生方法（如`Array.isArray`）
 - **自定义对象检测**：结合`Symbol.toStringTag`定义类型标签
 - **多窗口通信**：通过`window.postMessage`传递类型信息时自动转换数据格式

@@ -112,6 +112,7 @@
                 a,button {
                     display: inline-block;
                     color: var(--sidebar-text-color);
+                    fill: var(--sidebar-text-color);
                     width: 100%;
                     text-decoration: none;
                     position: relative;
@@ -321,6 +322,7 @@
         // .sidebar-menu li:hover > button,
         .sidebar-menu .sidebar-dropdown.current > button {
             color: var(--sidebar-primary) !important;
+            fill: var(--sidebar-primary) !important;
         }
 
         .sidebar-brand {

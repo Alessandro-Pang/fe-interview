@@ -1,10 +1,10 @@
 ---
-weight: 90006
+weight: 5090006
 date: "2025-03-04T05:09:42.809Z"
 draft: false
 author: "zi.Yang"
 title: "Vue3.0中Treeshaking特性"
-icon: "javascript"
+icon: "/icon/vue.svg"
 toc: true
 description: "说说Vue 3.0中Treeshaking特性？举例说明一下？"
 tags: ["vue3"]

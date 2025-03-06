@@ -5,6 +5,7 @@
         {{ .Content }}
     </div>
 
+    {{- if eq hugo.Environment "production" }}
     <script src="https://giscus.app/client.js"
         data-repo="Alessandro-Pang/fe-interview"
         data-repo-id="R_kgDOOCJ7MQ"
@@ -21,6 +22,7 @@
         crossorigin="anonymous"
         async>
     </script>
+    {{- end -}}
 
     {{ if and .GitInfo .Site.Params.docs.repoURL -}}
         {{ partial (printf "%s/%s" ($.Scratch.Get "pathName") "gitinfo") . }}

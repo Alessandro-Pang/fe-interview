@@ -1,10 +1,10 @@
 ---
-weight: 90005
+weight: 5090005
 date: "2025-03-04T05:09:42.809Z"
 draft: false
 author: "zi.Yang"
 title: "proxy api 与 defineProperty API 比较"
-icon: "javascript"
+icon: "/icon/vue.svg"
 toc: true
 description: "Vue3.0里为什么要用 Proxy API 替代 defineProperty API ？"
 tags: ["vue3"]

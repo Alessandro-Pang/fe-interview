@@ -1,5 +1,5 @@
 ---
-weight: 2400
+weight: 2014000
 date: '2025-03-04T06:58:34.329Z'
 draft: false
 author: zi.Yang
@@ -18,6 +18,7 @@ tags:
 ## 考察点分析
 
 本题重点考察候选人对现代CSS特性的掌握程度及实际应用能力：
+
 1. **CSS作用域管理能力**：通过CSS Variables的作用域规则，评估CSS自定义属性的工程化运用
 2. **新选择器应用能力**：考查现代伪类选择器的语义化运用及优先级控制技巧
 3. **布局系统理解深度**：通过subgrid布局验证对现代布局方案的理解及复杂场景解决方案设计
@@ -25,26 +26,32 @@ tags:
 ## 技术解析
 
 ### 关键知识点优先级
+
 CSS Variables作用域 > 伪类选择器差异 > Subgrid布局原理
 
 ### 原理剖析
+
 #### CSS Variables作用域
+
 - 定义在`:root`的变量具有全局作用域
 - 元素级定义形成局部作用域，遵循CSS级联规则
 - 通过`var()`函数访问时会向上查找作用域链
 - 继承特性：子元素可访问父元素变量，除非被覆盖
 
 #### 伪类选择器差异
+
 - `:is()`：继承选择器列表中最高优先级
 - `:where()`：优先级始终为0，适合创建低权重样式基类
 - 语法糖作用：简化嵌套选择器书写（例：`header > :is(h1, h2)`）
 
 #### Subgrid布局优化
+
 - 允许子网格继承父网格轨道定义
 - 实现跨层级网格对齐，减少嵌套布局计算
 - 表格场景中保持行列严格对齐，支持响应式自适应
 
 ### 常见误区
+
 - 误将CSS Variables等同于预处理器变量
 - 混淆`:is()`与`:where()`的优先级差异
 - 未处理subgrid的浏览器兼容性（需加`@supports`检测）
@@ -52,6 +59,7 @@ CSS Variables作用域 > 伪类选择器差异 > Subgrid布局原理
 ## 问题解答
 
 ### CSS Variables
+
 ```css
 :root { --main-color: #2196f3; } /* 全局作用域 */
 .component {
@@ -61,6 +69,7 @@ CSS Variables作用域 > 伪类选择器差异 > Subgrid布局原理
 ```
 
 JavaScript操作：
+
 ```javascript
 // 获取根变量
 const root = document.documentElement;
@@ -71,6 +80,7 @@ root.style.setProperty('--text-size', '18px');
 ```
 
 ### 伪类选择器应用
+
 ```css
 /* 传统写法 */
 nav ul > li, 
@@ -91,6 +101,7 @@ nav :is(ul, ol, menu) > li {
 ```
 
 ### Subgrid表格优化
+
 ```css
 .table {
   display: grid;
@@ -108,6 +119,7 @@ nav :is(ul, ol, menu) > li {
 ## 解决方案
 
 ### 编码示例
+
 ```css
 /* 主题系统实现 */
 :root {
@@ -129,6 +141,7 @@ nav :is(ul, ol, menu) > li {
 ```
 
 ### 可扩展性建议
+
 1. 变量命名使用语义化前缀（如`--color-primary`）
 2. 复杂布局配合CSS Grid Level2的`@supports`做特性检测
 3. 移动端优先原则定义默认变量值

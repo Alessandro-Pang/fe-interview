@@ -1,5 +1,5 @@
 ---
-weight: 3700
+weight: 11027000
 date: '2025-03-04T09:31:00.147Z'
 draft: false
 author: zi.Yang
@@ -18,11 +18,13 @@ tags:
 ## 考察点分析
 
 本题考察候选人三个核心能力维度：
+
 1. **安全防护机制理解**：Cookie安全属性的防御作用及组合使用策略
 2. **浏览器安全策略演进**：SameSite默认值变化的背景及技术决策逻辑
 3. **纵深防御体系建设**：多维度安全属性的协同防御效果
 
 具体技术评估点：
+
 - SameSite三种模式对CSRF攻击的阻断原理
 - HttpOnly与Secure属性的防御边界
 - 浏览器厂商安全策略调整的驱动因素
@@ -34,24 +36,30 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 SameSite策略 > CSRF攻击链 > HttpOnly/Secure防御层次
 
 ### 原理剖析
+
 **SameSite=Lax**（默认值）：
+
 - 允许跨站GET请求携带Cookie（如图片加载、导航跳转）
 - 阻止跨站POST请求携带Cookie（防御表单类CSRF）
 - 例外：通过top-level navigation的GET请求携带Cookie（保留用户登录态）
 
 **SameSite=Strict**：
+
 - 完全禁止跨站请求携带Cookie
 - 典型场景：银行交易页面需要最高级别防护
 
 **防御纵深构建**：
+
 1. HttpOnly：防止XSS攻击窃取Cookie（`document.cookie`不可读）
 2. Secure：HTTPS加密传输防中间人窃听（非安全连接不发送）
 3. SameSite：最后一层防御CSRF的核心机制
 
 ### 常见误区
+
 - 误认为Lax模式能完全防御CSRF（需配合CSRF Token）
 - 忽略Secure属性在HTTP环境中的失效风险
 - 混淆XSS与CSRF的防御边界（HttpOnly专注XSS，SameSite专注CSRF）
@@ -67,6 +75,7 @@ SameSite=Lax通过限制跨站POST请求携带Cookie，有效防御大多数CSRF
 ## 解决方案
 
 ### 编码示例
+
 ```javascript
 // Express设置安全Cookie示例
 res.cookie('sessionID', 'encryptedValue', {
@@ -78,10 +87,12 @@ res.cookie('sessionID', 'encryptedValue', {
 ```
 
 **复杂度优化**：
+
 - 时间：O(1)配置复杂度
 - 空间：无额外存储开销
 
 **扩展建议**：
+
 - 低端设备：保持Lax避免strict导致的重复认证
 - 高安全场景：叠加CSRF Token验证
 - 兼容旧浏览器：检测`SameSite`支持情况动态降级

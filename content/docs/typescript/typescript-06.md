@@ -1,5 +1,5 @@
 ---
-weight: 1600
+weight: 7006000
 date: '2025-03-04T08:37:03.206Z'
 draft: false
 author: zi.Yang
@@ -17,11 +17,13 @@ tags:
 ## 考察点分析
 
 该题目主要考察以下核心能力维度：
+
 1. **TypeScript类型系统理解**：对类型定义基础语法的掌握程度
 2. **类型工具辨析能力**：区分interface和type在不同场景下的适用性
 3. **细节特性把控**：可选属性和只读属性等高级类型特性的正确使用
 
 具体评估点包括：
+
 - 对象类型声明语法差异
 - 可选属性（Optional Properties）定义规范
 - 只读属性（Readonly Modifier）实现方式
@@ -33,9 +35,11 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 Interface基本类型声明 > Type类型别名声明 > 声明合并特性 > 扩展能力差异
 
 #### 1. 基础定义
+
 ```typescript
 // Interface方式
 interface Person {
@@ -51,7 +55,9 @@ type Person = {
 ```
 
 #### 2. 可选属性
+
 两者均使用`?:`语法：
+
 ```typescript
 interface Person {
   name: string
@@ -65,7 +71,9 @@ type Person = {
 ```
 
 #### 3. 只读属性
+
 均使用`readonly`修饰符：
+
 ```typescript
 interface Person {
   readonly id: number
@@ -79,6 +87,7 @@ type Person = {
 ```
 
 ### 常见误区
+
 1. 错误认为interface和type语法存在本质差异（实际在对象类型定义时语法一致）
 2. 混淆类型扩展方式（interface用extends，type用交叉类型）
 3. 过度使用type定义对象类型（不符合TS官方推荐规范）
@@ -90,11 +99,13 @@ type Person = {
 通过interface和type定义包含name和age属性的对象类型语法完全一致，两者在可选属性和只读属性的定义语法上也没有差异。主要区别体现在类型系统的其他特性中：
 
 **相同点**：
+
 - 对象结构定义语法相同
 - 均支持`?:`声明可选属性
 - 均支持`readonly`修饰符
 
 **核心差异**：
+
 1. interface支持声明合并，重复声明会自动合并
 2. type可定义联合类型、元组等复杂类型
 3. 官方推荐interface定义对象类型，type用于类型别名
@@ -115,10 +126,13 @@ type User = { age: number } // 报错
 ## 深度追问
 
 1. **何时应该优先使用interface？**
+
 > 需要声明合并或定义对象类型时
 
 2. **type如何实现继承？**
+
 > 使用交叉类型：type Admin = Person & { permissions: string[] }
 
 3. **readonly与const的区别？**
+
 > const处理变量，readonly处理属性

@@ -1,10 +1,10 @@
 ---
-weight: 90003
+weight: 5090003
 date: "2025-03-04T05:09:42.809Z"
 draft: false
 author: "zi.Yang"
 title: "vue3 实现一个 Modal 组件设计思路与流程分析"
-icon: "javascript"
+icon: "/icon/vue.svg"
 toc: true
 description: "用Vue3.0 写过组件吗？如果想实现一个 Modal你会怎么设计？"
 tags: ["vue3"]

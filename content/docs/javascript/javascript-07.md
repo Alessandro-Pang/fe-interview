@@ -1,5 +1,5 @@
 ---
-weight: 1700
+weight: 3007000
 date: '2025-03-04T06:58:24.481Z'
 draft: false
 author: zi.Yang
@@ -27,9 +27,11 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 ToPrimitive > 运算符重载 > 假值列表
 
 ### 原理剖析
+
 1. **字符串拼接**：任意操作数出现字符串时触发String转换。对象通过ToPrimitive(hint:String)处理，优先调用toString()。示例：`[1,2] + '3' => "1,23"`
 
 2. **数值运算**：除`+`外的算术运算符强制Number转换。undefined转NaN，null转0。对象先valueOf()后toString()转换。示例：`{ valueOf: () => 2 } * 3 => 6`
@@ -37,6 +39,7 @@ ToPrimitive > 运算符重载 > 假值列表
 3. **布尔判断**：逻辑判断时执行ToBoolean转换，假值包括：false, 0, "", null, undefined, NaN。注意空数组/对象为真值。示例：`if([]) { // 会执行 }`
 
 ### 常见误区
+
 1. 混淆`+`运算符的双重功能（字符串拼接 vs 数值相加）
 2. 误判空数组的布尔值（[]的真值为true）
 3. 忽略对象转换时valueOf与toString的调用顺序
@@ -49,6 +52,7 @@ ToPrimitive > 运算符重载 > 假值列表
 JavaScript隐式转换规则分为三个场景：
 
 **字符串拼接**：当`+`任一操作数为字符串时执行字符串拼接。对象通过ToPrimitive(hint:String)转换，优先调用toString()。例：
+
 ```javascript
 1 + '2' // '12'
 [1] + 2 // '12'（数组转字符串'1'）
@@ -56,6 +60,7 @@ JavaScript隐式转换规则分为三个场景：
 ```
 
 **数值运算**：除`+`外的算术运算符强制转为数字。undefined转NaN，null转0。对象优先valueOf()。例：
+
 ```javascript
 '5' - 3  // 2（字符串转数字）
 +new Date()  // 时间戳（调用valueOf()）
@@ -63,6 +68,7 @@ null / 10     // 0
 ```
 
 **布尔判断**：逻辑上下文使用ToBoolean转换。假值仅有6种：false, 0, "", null, undefined, NaN。例：
+
 ```javascript
 if ("") {}   // 不执行
 Boolean({})   // true
@@ -70,6 +76,7 @@ Boolean({})   // true
 ```
 
 **意外场景**：
+
 1. 日期对象参与加法：`new Date() + 1`转字符串拼接
 2. 减法中的对象转换：`{valueOf: ()=>[] } - '1'`转0 -1 = -1
 3. 数组索引转换：`["11"] == 11`（数组转字符串后转数字）
@@ -79,6 +86,7 @@ Boolean({})   // true
 ## 解决方案
 
 ### 编码示例
+
 ```javascript
 // 安全类型转换函数
 function safeAdd(a, b) {
@@ -95,6 +103,7 @@ function isTruthy(v) {
 ```
 
 ### 可扩展性建议
+
 1. 大数据运算时优先使用TypedArray避免隐式转换
 2. 使用TypeScript类型注解减少意外转换
 3. 低端设备中避免密集的类型转换操作（可能影响性能）
@@ -104,10 +113,13 @@ function isTruthy(v) {
 ## 深度追问
 
 ### 如何避免隐式转换导致的BUG？
+
 `推荐使用===运算符与显式类型转换`
 
 ### Symbol.toPrimitive的作用？
+
 `允许对象自定义类型转换行为`
 
 ### 如何准确判断NaN？
+
 `使用Number.isNaN()而非x === NaN`

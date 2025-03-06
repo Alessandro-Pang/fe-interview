@@ -1,5 +1,5 @@
 ---
-weight: 4500
+weight: 3035000
 date: '2025-03-04T06:58:24.484Z'
 draft: false
 author: zi.Yang
@@ -16,11 +16,13 @@ tags:
 ## 考察点分析
 
 本题主要考察以下核心能力维度：
+
 1. **ES6特性理解深度**：对Symbol类型的特性、设计初衷及适用场景的掌握程度
 2. **对象属性管理能力**：如何安全地扩展对象属性避免命名冲突
 3. **跨模块通信认知**：理解Symbol注册表机制在模块化开发中的作用
 
 技术评估点：
+
 - Symbol的唯一性特征及不可枚举特性
 - 全局注册表（Symbol.for()）与普通Symbol的存储差异
 - 私有属性模拟的实现与局限性
@@ -32,12 +34,15 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 1. **唯一标识生成**：Symbol()每次调用创建唯一值
 2. **全局注册表**：Symbol.for()实现跨模块复用
 3. **属性隐藏**：Object.getOwnPropertySymbols()可获取Symbol属性
 
 ### 原理剖析
+
 Symbol的核心特性在于其唯一性，即使相同描述的Symbol也不相等：
+
 ```javascript
 const s1 = Symbol('key')
 const s2 = Symbol('key')
@@ -45,6 +50,7 @@ console.log(s1 === s2) // false
 ```
 
 Symbol.for()采用全局注册表机制：
+
 ```mermaid
 graph LR
 A[Symbol.for('key')] --> B{检查注册表}
@@ -53,6 +59,7 @@ B -->|不存在| D[创建新Symbol并注册]
 ```
 
 ### 常见误区
+
 1. 误将Symbol属性当作完全私有的（通过反射API仍可获取）
 2. 混淆Symbol.keyFor()与Symbol.description的用途
 3. 在JSON序列化时忽略Symbol属性的不可序列化特性
@@ -64,6 +71,7 @@ B -->|不存在| D[创建新Symbol并注册]
 Symbol的三大典型应用场景：
 
 **1. 对象唯一属性标识**
+
 ```javascript
 const LOG_LEVEL = {
   DEBUG: Symbol('debug'),
@@ -73,6 +81,7 @@ const LOG_LEVEL = {
 ```
 
 **2. 防止属性冲突**
+
 ```javascript
 // 第三方库扩展对象
 const customIterator = Symbol('iterator');
@@ -83,6 +92,7 @@ Array.prototype[customIterator] = function() {
 ```
 
 **3. 模拟私有成员**
+
 ```javascript
 const _counter = Symbol('counter');
 class Widget {
@@ -93,6 +103,7 @@ class Widget {
 ```
 
 **本质区别**：
+
 - `Symbol()`：每次创建新Symbol，不登记到全局注册表
 - `Symbol.for()`：先查询全局注册表，存在相同key则复用，实现跨模块访问
 
@@ -101,6 +112,7 @@ class Widget {
 ## 解决方案
 
 ### 编码示例（元编程应用）
+
 ```javascript
 // 自定义对象toString标签
 const timestampSymbol = Symbol('timestamp');
@@ -124,6 +136,7 @@ console.log(clock + ''); // 调用Symbol.toPrimitive
 ```
 
 ### 可扩展性建议
+
 1. **大流量场景**：优先使用Symbol.for()减少内存占用
 2. **低端设备**：避免过度使用Symbol影响属性遍历性能
 3. **跨iframe通信**：通过Symbol.for()共享Symbol标识

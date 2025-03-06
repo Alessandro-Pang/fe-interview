@@ -1,5 +1,5 @@
 ---
-weight: 1600
+weight: 2006000
 date: '2025-03-04T06:58:34.328Z'
 draft: false
 author: zi.Yang
@@ -18,11 +18,13 @@ tags:
 ## 考察点分析
 
 本题主要考察以下核心能力维度：
+
 1. **CSS层叠上下文机制**：对层叠上下文创建条件的理解，及其对z-index的影响
 2. **定位体系差异**：sticky定位的复合定位特性及其与fixed的区别
 3. **层叠顺序规则**：元素在三维空间中的渲染优先级逻辑
 
 具体技术评估点包括：
+
 - z-index失效的触发条件与层叠上下文隔离现象
 - position:sticky的滚动阈值触发机制
 - stacking context形成条件及层叠层级计算规则
@@ -33,11 +35,14 @@ tags:
 ## 技术解析
 
 ### 关键知识点
+
 层叠上下文 > 定位类型 > z-index计算规则 > 渲染层合成
 
 #### 原理剖析
+
 1. **z-index失效**：
    - 当父元素未形成层叠上下文时，子元素的z-index仅在当前上下文内生效。若父元素与兄弟元素处于不同层叠上下文，子元素的层级比较会被"上下文结界"隔离。
+
    ```html
    <!-- 失效案例 -->
    <div style="position: relative; z-index: 1"> <!-- 父元素未创建层叠上下文 -->
@@ -46,6 +51,7 @@ tags:
    <div style="position: relative; z-index: 2"></div>
    <!-- 子元素的999实际上与兄弟元素的2比较时无效 -->
    ```
+
    - 常见触发条件：父元素设置opacity<1、transform、filter等属性自动创建层叠上下文
 
 2. **position:sticky**：
@@ -63,6 +69,7 @@ tags:
     7. z-index > 0的子上下文
 
 #### 常见误区
+
 - 误认为z-index全局有效，忽略层叠上下文的隔离性
 - 混淆sticky与fixed的定位坐标系（sticky相对父容器，fixed相对视口）
 
@@ -71,15 +78,18 @@ tags:
 ## 问题解答
 
 **z-index失效场景**：
+
 1. 父元素未创建层叠上下文时，子元素的z-index仅在同一上下文内比较
 2. 父元素通过opacity/filter等隐式创建层叠上下文，导致子元素层级受限
 3. 不同层叠上下文中的元素直接比较z-index无意义
 
 **sticky原理**：
+
 - 滚动时在阈值区间切换定位模式，依赖滚动容器的滚动偏移计算
 - 与fixed的区别：fixed始终相对视口定位，sticky受父容器边界约束
 
 **层叠顺序示意图**：
+
 ```
 | 层级 | 元素类型                  |
 |-------|---------------------------|
@@ -97,6 +107,7 @@ tags:
 ## 解决方案
 
 ### sticky定位实现示例
+
 ```javascript
 // 滚动监听实现sticky polyfill
 function stickyPolyfill(element, threshold) {
@@ -113,6 +124,7 @@ function stickyPolyfill(element, threshold) {
 ```
 
 ### 可扩展性建议
+
 - 大流量场景使用CSS原生sticky避免JS性能损耗
 - 低端设备可降级为relative定位保证可用性
 

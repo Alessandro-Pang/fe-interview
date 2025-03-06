@@ -162,6 +162,7 @@
             .badge,
             .para {
                 color: var(--white) !important;
+                fill: var(--white) !important;
                 opacity: 0.5;
             }
             .content,
@@ -223,5 +224,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    svg.icon {
+        min-width: auto;
+        margin-left: 0 !important;
     }
 }
