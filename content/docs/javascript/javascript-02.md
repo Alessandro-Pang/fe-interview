@@ -23,7 +23,7 @@ tags:
 
 具体技术评估点：
 - typeof运算符的底层实现机制及限制
-- instanceof运算符的原型链查找原理 
+- instanceof运算符的原型链查找原理
 - 跨执行环境（iframe）的类型检测问题
 - Object.prototype.toString的可靠检测原理
 - ES6新增API的设计意图与兼容性处理
