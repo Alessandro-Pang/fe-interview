@@ -16,6 +16,7 @@ tags:
 ## 考察点分析
 
 这道题主要考察以下几个方面：
+
 1. 数组遍历和比较操作
 2. 时间复杂度优化
 3. 边界情况处理能力
@@ -43,7 +44,9 @@ tags:
 ---
 
 ## 问题解答
+
 ### 1. 排序法
+
   ```javascript
   function findTwoLargest(arr) {
     if (!Array.isArray(arr) || arr.length < 2) {
@@ -57,8 +60,11 @@ tags:
     return [sortedArr[0], sortedArr[1]];
   }
   ```
+
   **时间复杂度：O(n log n)，主要受排序算法影响**
+
 ### 2. 两次遍历法
+
   ```javascript
     function findTwoLargest(arr) {
       if (!Array.isArray(arr) || arr.length < 2) {
@@ -88,8 +94,11 @@ tags:
       return [max, secondMax];
     }
   ```
+
   **时间复杂度：O(n)，只需要遍历数组两次**
+
 ### 3. 单次遍历法
+
   ```javascript
   function findTwoLargest(arr) {
     if (!Array.isArray(arr) || arr.length < 2) {
@@ -113,8 +122,11 @@ tags:
     return [max, secondMax];
   }
   ```
+
   **时间复杂度：O(n)，只需要遍历数组一次**
+
 ### 4. 测试用例
+
   ```javascript
   // 测试
   console.log(findTwoLargest([1, 2, 3, 4, 5])); // [5, 4]
@@ -122,11 +134,15 @@ tags:
   console.log(findTwoLargest([-1, -2, -3, -4])); // [-1, -2]
   console.log(findTwoLargest([10])); // "数组长度不足"
   ```
+
 ---
 
 ## 深度追问
+
 ### 1. 如何处理有多个相同的最大值的情况？
+
 如果我们严格定义"两个最大的值"为不同的值，当有多个相同的最大值时，我们需要找出最大值和严格小于最大值的第二大值。
+
 ```javascript
 function findTwoDistinctLargest(arr) {
   if (!Array.isArray(arr) || arr.length < 2) {
@@ -149,6 +165,7 @@ function findTwoDistinctLargest(arr) {
 console.log(findTwoDistinctLargest([5, 5, 5, 3, 2])); // [5, 3]
 console.log(findTwoDistinctLargest([5, 5, 5, 5])); // "没有两个不同的值"
 ```
+
 另一种方法是在单次遍历中处理：
 
 ```javascript
@@ -180,7 +197,9 @@ function findTwoDistinctLargest(arr) {
 ```
 
 ### 2. 如何优化空间复杂度？
+
 1. 排序法 ：空间复杂度为O(n)，因为创建了新数组
+
    ```javascript
    // 优化空间复杂度的排序法 - 原地排序
     function findTwoLargestOptimized(arr) {
@@ -194,9 +213,11 @@ function findTwoDistinctLargest(arr) {
       return [arr[0], arr[1]];
     }
    ```
+
    注意：这种方法会修改原数组，如果不希望修改原数组，就无法避免O(n)的空间复杂度。
 
 2. 两次遍历法和单次遍历法 ：空间复杂度均为O(1)，只使用了常数个变量
+
     ```javascript
     // 单次遍历法的空间复杂度已经是最优O(1)
     function findTwoLargest(arr) {
@@ -225,10 +246,13 @@ function findTwoDistinctLargest(arr) {
     return [max, secondMax];
     }
     ```
+
     总结：对于这个问题，单次遍历法已经达到了O(1)的最优空间复杂度，无需进一步优化。如果不希望修改原数组，排序法的O(n)空间复杂度是无法避免的。
 
 ### 3. 如何处理大数据量的情况？
+
    对于非常大的数组，可以考虑分治法或并行处理：
+
   ```javascript
   function findTwoLargestParallel(arr) {
     if (!Array.isArray(arr) || arr.length < 2) {
@@ -282,10 +306,13 @@ function findTwoDistinctLargest(arr) {
 
   // 在实际环境中，可以使用Web Workers或Node.js的Worker Threads实现真正的并行处理
   ```
+
   在JavaScript中，可以使用Web Workers或Node.js的Worker Threads来实现真正的并行计算，进一步提高大数据量下的处理效率。
 
 ### 4. 如何扩展到求前K大的元素？
+
    求数组中前K大的元素，可以使用最小堆（优先队列）实现：
+
   ```javascript
   class MinHeap {
     constructor() {
@@ -396,5 +423,6 @@ function findTwoDistinctLargest(arr) {
   // 测试
   console.log(findKLargest([3, 1, 5, 7, 2, 4, 9, 6], 3)); // [7, 9, 6]
   ```
+
   时间复杂度：O(n log k)，其中n是数组长度，k是要找的最大元素个数。空间复杂度：O(k)，用于存储堆。
   这种方法对于大数据量且k远小于n的情况特别高效。

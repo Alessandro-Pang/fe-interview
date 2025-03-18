@@ -15,6 +15,7 @@ tags:
 ---
 
 ## 考察点分析
+
 实现无限累加函数主要考察以下几个知识点：
 
 - 函数柯里化（Currying）技术
@@ -22,11 +23,13 @@ tags:
 - 函数的隐式转换
 - 链式调用的实现方式
 - JavaScript中的toString/valueOf方法重写
+
 ---
 
 ## 技术解析
 
 ### 原理剖析
+
 无限累加函数的实现主要基于以下几个技术原理：
 
 1. 函数柯里化 ：将接受多个参数的函数转变为接受单个参数的函数序列，每个函数返回一个新函数，处理下一个参数。
@@ -35,6 +38,7 @@ tags:
 4. 方法重写 ：通过重写函数的 toString() 和 valueOf() 方法，使函数在被转换为原始值时返回累加的结果。
 
 ### 常见误区
+
 1. 忽略函数的隐式转换 ：很多人不了解JavaScript中函数也可以有自己的方法，以及如何利用 toString() 和 valueOf() 进行隐式转换。
 2. 混淆闭包作用域 ：没有正确理解闭包的作用域，导致累加值无法正确保存和更新。
 3. 返回值处理不当 ：没有同时处理函数调用和数值转换的情况，导致函数无法同时支持 add(1)(2) 和 add(1)(2) + 3 这两种用法
@@ -42,8 +46,11 @@ tags:
 ---
 
 ## 问题解答
+
 以下是实现无限累加函数的几种方法：
+
 1. 利用函数的toString/valueOf方法
+
    ```javascript
     function add(a) {
       // 定义一个函数，保存当前累加的结果
@@ -72,7 +79,9 @@ tags:
     console.log(add(1)(2)(3).toString()); // "6"
     console.log(add(1)(2)(3) + 10);       // 16 (通过valueOf隐式转换为数字)
    ```
+
 2. 使用Proxy实现更优雅的解决方案
+
     ```javascript
       function add(initial = 0) {
       const handler = {
@@ -100,11 +109,15 @@ tags:
     console.log(add(1)(2)(3) + 0);  // 6
     console.log(add(1)(2)(3)(4));   // 函数，但转换后是10
    ```
+
 ---
 
 ## 深度追问
+
 ### 1. 如何处理参数为多个的情况？
+
 可以扩展实现支持多参数的累加函数：
+
   ```javascript
   function add(...args) {
     // 先对初始参数求和
@@ -131,8 +144,11 @@ tags:
   console.log(add(1, 2)(3, 4)(5) + 10);  // 25
   console.log(add(1)(2, 3, 4)(5, 6));    // 函数，但转换后是"21"
   ```
+
 ### 2. 如何确保函数在不同环境中的一致性？
+
 为了确保函数在不同环境中的一致性，应该同时实现 toString 、 valueOf 和 Symbol.toPrimitive 方法：
+
   ```javascript
     function add(a) {
     function sum(b) {
